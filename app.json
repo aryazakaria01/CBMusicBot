@@ -1,9 +1,9 @@
 {
-    "name": "Veez Music Bot",
-    "logo": "https://ibb.co/pjGzwvJ",
-    "description": "veez music bot project allow you to stream music trought the telegram voice chat feature.",
+    "name": "Cyber Music Bot",
+    "logo": "https://telegra.ph/file/bad69dc7929731b11e056.jpg",
+    "description": "cyber music bot project allow you to stream music trought the telegram voice chat feature.",
     "keywords": ["music", "voice chat", "telegram"],
-    "repository": "https://github.com/levina-lab/veezmusic",
+    "repository": "https://github.com/aryazakaria01/CBMusicBot",
     "stack": "container",
     "env": {
         "SESSION_NAME": {

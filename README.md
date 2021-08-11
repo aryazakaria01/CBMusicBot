@@ -2,6 +2,10 @@
 
 ### Music bot for playing music on telegram voice chat group.
 
+<p align="center">
+  <img src="https://telegra.ph/file/fab1f4f9b09430d1ad509.jpg">
+</p>
+
 <h3>Requirements 📝</h3>
 
 - FFmpeg

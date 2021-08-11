@@ -32,7 +32,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    m = message.reply("🔎 finding song...")
+    m = message.reply("🔎 ғɪɴᴅɪɴɢ sᴏɴɢ...")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -49,10 +49,10 @@ def song(client, message):
         results[0]["views"]
 
     except Exception as e:
-        m.edit("❌ song not found.\n\nplease give a valid song name.")
+        m.edit("✘ sᴏɴɢ ɴᴏᴛ ғᴏᴜɴᴅ.\n\nᴘʟᴇᴀsᴇ ɢɪᴠᴇ ᴀ ᴠᴀʟɪᴅ sᴏɴɢ ɴᴀᴍᴇ.")
         print(str(e))
         return
-    m.edit("📥 downloading...")
+    m.edit("† ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ...")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -73,7 +73,7 @@ def song(client, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("❌ error, wait for dev to fix")
+        m.edit("✘ ᴇʀʀᴏʀ, ᴡᴀɪᴛ ғᴏʀ ᴛʜᴇ ᴏᴡɴᴇʀ ᴛᴏ ғɪx ᴛʜɪs ᴘʀᴏʙʟᴇᴍ")
         print(e)
 
     try:
@@ -120,8 +120,8 @@ async def progress(current, total, message, start, type_of_ps, file_name=None):
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
         progress_str = "{0}{1} {2}%\n".format(
-            "".join(["🔴" for i in range(math.floor(percentage / 10))]),
-            "".join(["🔘" for i in range(10 - math.floor(percentage / 10))]),
+            "".ᴊᴏɪɴ(["✘" for i in range(math.floor(percentage / 10))]),
+            "".ᴊᴏɪɴ(["✘" for i in range(10 - math.floor(percentage / 10))]),
             round(percentage, 2),
         )
         tmp = progress_str + "{0} of {1}\nETA: {2}".format(
@@ -130,7 +130,7 @@ async def progress(current, total, message, start, type_of_ps, file_name=None):
         if file_name:
             try:
                 await message.edit(
-                    "{}\n**File Name:** `{}`\n{}".format(type_of_ps, file_name, tmp)
+                    "{}\n**ғɪʟᴇ ɴᴀᴍᴇ:** `{}`\n{}".format(type_of_ps, file_name, tmp)
                 )
             except FloodWait as e:
                 await asyncio.sleep(e.x)
@@ -251,17 +251,17 @@ async def ytmusic(client, message: Message):
     global is_downloading
     if is_downloading:
         await message.reply_text(
-            "another download is in progress, try again after sometime."
+            "ᴀɴᴏᴛʜᴇʀ ᴅᴏᴡɴʟᴏᴀᴅ ɪs ɪɴ ᴘʀᴏɢʀᴇss, ᴛʀʏ ᴀɢᴀɪɴ ᴀғᴛᴇʀ sᴏᴍᴇᴛɪᴍᴇ."
         )
         return
 
     urlissed = get_text(message)
 
     pablo = await client.send_message(
-        message.chat.id, f"**getting {urlissed} from youtube servers, please wait...**"
+        message.chat.id, f"**ɢᴇᴛᴛɪɴɢ {urlissed} ғʀᴏᴍ ʏᴏᴜᴛᴜʙᴇ sᴇʀᴠᴇʀs, ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ...**"
     )
     if not urlissed:
-        await pablo.edit("invalid command syntax, please check help menu to know more!")
+        await pablo.edit("ɪɴᴠᴀʟɪᴅ ᴄᴏᴍᴍᴀɴᴅ sʏɴᴛᴀx, ᴘʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ʜᴇʟᴘ ᴍᴇɴᴜ ᴛᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ!")
         return
 
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
@@ -295,7 +295,7 @@ async def ytmusic(client, message: Message):
 
             if duration > DURATION_LIMIT:
                 await pablo.edit(
-                    f"❌ Videos longer than {DURATION_LIMIT} minute(s) aren't allowed, the provided video is {duration} minute(s)"
+                    f"✘ ᴠɪᴅᴇᴏs ʟᴏɴɢᴇʀ ᴛʜᴀɴ {DURATION_LIMIT} ᴍɪɴᴜᴛᴇ(s) ᴀʀᴇɴ'ᴛ ᴀʟʟᴏᴡᴇᴅ, ᴛʜᴇ ᴘʀᴏᴠɪᴅᴇᴅ ᴠɪᴅᴇᴏ ɪs {duration} ᴍɪɴᴜᴛᴇ(s)"
                 )
                 is_downloading = False
                 return
@@ -308,7 +308,7 @@ async def ytmusic(client, message: Message):
 
     c_time = time.time()
     file_stark = f"{ytdl_data['id']}.mp4"
-    capy = f"✨ **video name :** __{thum}__ \n💭 **request by:** __{urlissed}__ \n📣 **channel :** __{thums}__ \n📌 **link :** [click here]({mo})"
+    capy = f"✨ **ᴠɪᴅᴇᴏ ɴᴀᴍᴇ :** __{thum}__ \n💭 **ʀᴇǫᴜᴇsᴛᴇᴅ ʙʏ:** __{urlissed}__ \n📣 **ᴄʜᴀɴɴᴇʟ :** __{thums}__ \n📌 **ʟɪɴᴋ :** [click here]({mo})"
     await client.send_video(
         message.chat.id,
         video=open(file_stark, "rb"),
@@ -321,7 +321,7 @@ async def ytmusic(client, message: Message):
         progress_args=(
             pablo,
             c_time,
-            f"`uploading {urlissed} song from youtube music!`",
+            f"`ᴜᴘʟᴏᴀᴅɪɴɢ {urlissed} sᴏɴɢ ғʀᴏᴍ ʏᴏᴜᴛᴜʙᴇ ᴍᴜsɪᴄ!`",
             file_stark,
         ),
     )

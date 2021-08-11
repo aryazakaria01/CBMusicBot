@@ -17,7 +17,7 @@ async def pmPermit(client: USER, message: Message):
                 return
             await USER.send_message(
                 message.chat.id,
-            f"✨ Hello, i'm a official **music assistant of {BOT_NAME}.**\n\n❗️ **notes:**\n\n⫸ don't spam message.\n⫸ don't send me anything confidential\n\n⨀ Join to @{UPDATES_CHANNEL} \n⨀ Join to @{GROUP_SUPPORT}\n\n👩🏻‍💻 Dev: @{OWNER_NAME}\n\n",
+            f"✨ ʜᴇʟʟᴏ, ɪ'ᴍ ᴀ ᴏғғɪᴄɪᴀʟ **ᴍᴜsɪᴄ ᴀssɪsᴛᴀɴᴛ ᴏғ {BOT_NAME}.**\n\n☨ **ɴᴏᴛᴇs:**\n\n✘ ᴅᴏɴ'ᴛ sᴘᴀᴍ ᴍᴇssᴀɢᴇ.\n✘ ᴅᴏɴ'ᴛ sᴇɴᴅ ᴍᴇ ᴀɴʏᴛʜɪɴɢ ᴄᴏɴғɪᴅᴇɴᴛɪᴀʟ\n\n✘ ᴊᴏɪɴ ᴛᴏ @{UPDATES_CHANNEL} \n✘ ᴊᴏɪɴ ᴛᴏ @{GROUP_SUPPORT}\n\n👩🏻‍💻 ᴅᴇᴠ: @{OWNER_NAME}\n\n",
             )
             return
 
@@ -31,11 +31,11 @@ async def bye(client: Client, message: Message):
         queryy = text[1]
         if queryy == "on":
             PMSET = True
-            await message.reply_text("✅ pmpermit turned on")
+            await message.reply_text("✔ ᴘᴍᴘᴇʀᴍɪᴛ ᴛᴜʀɴᴇᴅ ᴏɴ")
             return
         if queryy == "off":
             PMSET = None
-            await message.reply_text("❎ pmpermit turned off")
+            await message.reply_text("✘ ᴘᴍᴘᴇʀᴍɪᴛ ᴛᴜʀɴᴇᴅ ᴏғғ")
             return
 
 @USER.on_message(filters.text & filters.private & filters.me)        
@@ -43,7 +43,7 @@ async def autopmPermiat(client: USER, message: Message):
     chat_id = message.chat.id
     if not chat_id in pchats:
         pchats.append(chat_id)
-        await message.reply_text("approved to pm due to outgoing messages")
+        await message.reply_text("ᴀᴘᴘʀᴏᴠᴇᴅ ᴛᴏ ᴘᴍ ᴅᴜᴇ ᴛᴏ ᴏᴜᴛɢᴏɪɴɢ ᴍᴇssᴀɢᴇs")
         return
     message.continue_propagation()    
     
@@ -52,7 +52,7 @@ async def pmPermiat(client: USER, message: Message):
     chat_id = message.chat.id
     if not chat_id in pchats:
         pchats.append(chat_id)
-        await message.reply_text("✅ approved to pm.")
+        await message.reply_text("✔ ᴀᴘᴘʀᴏᴠᴇᴅ ᴛᴏ ᴘᴍ.")
         return
     message.continue_propagation()    
     
@@ -62,6 +62,6 @@ async def rmpmPermiat(client: USER, message: Message):
     chat_id = message.chat.id
     if chat_id in pchats:
         pchats.remove(chat_id)
-        await message.reply_text("❌ disapproved to pm.")
+        await message.reply_text("✘ ᴅɪsᴀᴘᴘʀᴏᴠᴇᴅ ᴛᴏ ᴘᴍ.")
         return
     message.continue_propagation()

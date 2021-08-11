@@ -1,10 +1,6 @@
-<h2 align="centre">🎶 Veez Music Bot</h2>
+<h2 align="centre">🎶 Cyber Music Bot</h2>
 
 ### Music bot for playing music on telegram voice chat group.
-
-<p align="center">
-  <img src="https://telegra.ph/file/8bf3d62837cb59c3f8e7f.png">
-</p>
 
 <h3>Requirements 📝</h3>
 
@@ -58,7 +54,7 @@ the easy way to host this bot, deploy to Heroku or Railway
 [![Deploy+on+Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/levina-lab/VeezMusic&envs=SESSION_NAME,BOT_TOKEN,BOT_USERNAME,BOT_NAME,GROUP_SUPPORT,ASSISTANT_NAME,BG_IMAGE,UPDATES_CHANNEL,API_ID,PMPERMIT,API_HASH,SUDO_USERS,DURATION_LIMIT)
 
 ### Credits 💖
-- [Levina](https://github.com/levina-lab): Dev
+- [Arya Zakaria](https://github.com/aryazakaria01): Dev
 - [Laky](https://github.com/Laky-64) & [Andrew](https://github.com/AndrewLaneX): PyTgCalls
 - [Original Repo](https://github.com/suprojects/CallsMusic)
 - [Veez Music Bot](https://t.me/veezmusicbot) Our Music Bot

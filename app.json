@@ -1,0 +1,83 @@
+{
+    "name": "Veez Music Bot",
+    "logo": "https://ibb.co/pjGzwvJ",
+    "description": "veez music bot project allow you to stream music trought the telegram voice chat feature.",
+    "keywords": ["music", "voice chat", "telegram"],
+    "repository": "https://github.com/levina-lab/veezmusic",
+    "stack": "container",
+    "env": {
+        "SESSION_NAME": {
+            "description": "fill with the pyrogram session string",
+            "required": true
+        },
+        "BOT_TOKEN": {
+            "description": "your bot token from @BotFather",
+            "required": true
+        },
+        "BOT_NAME": {
+            "description": "your music bot name.",
+            "required": false,
+            "value": ""
+        },
+        "BOT_USERNAME": {
+            "description": "fill with your bot username without @",
+            "required": true,
+            "value": "veezmusicbot"
+        },
+        "ASSISTANT_NAME": {
+            "description": "fill with the assistant username without @",
+            "required": true,
+            "value": "veezasisstant"
+        },
+        "BG_IMAGE": {
+            "description": "isi dengan link background image kalian",
+            "required": false,
+            "value": "https://telegra.ph/file/d91623e9cefcef8fb3aa8.png"
+        },
+        "OWNER_NAME": {
+            "description": "fill with your username without @",
+            "required": false,
+            "value": "dlwrml"
+        },
+        "API_ID": {
+            "description": "your App ID from my.telegram.org/apps",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "your Api hash from my.telegram.org/apps",
+            "required": true
+        },
+        "SUDO_USERS": {
+            "description": "list id untuk daftar anggota sudo (pisahkan dengan spasi).",
+            "required": true
+        },
+        "DURATION_LIMIT": {
+            "description": "max durasi untuk video yang diunduh (dalam menit).",
+            "required": true,
+            "value": "15"
+        },
+        "PMPERMIT": {
+            "description": "pm-permit untuk assistant.",
+            "required": false,
+            "value": "ENABLE"
+        },
+        "UPDATES_CHANNEL": {
+            "description": "isi dengan username channel kamu, jika tidak punya lewati saja",
+            "required": false,
+            "value": "levinachannel"
+        },
+        "GROUP_SUPPORT": {
+            "description": "isi dengan username grup kamu, jika tidak punya skip saja",
+            "required": false,
+            "value": "gcsupportbots"
+        }
+    },
+    "buildpacks": [
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ]
+}

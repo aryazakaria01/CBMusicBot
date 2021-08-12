@@ -520,8 +520,8 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🎛 ᴍᴇɴᴜ", callback_data="menu"),
-                    InlineKeyboardButton("❌ ᴄʟᴏsᴇ", callback_data="cls"),
+                    InlineKeyboardButton("♜ ᴍᴇɴᴜ", callback_data="menu"),
+                    InlineKeyboardButton("✘ ᴄʟᴏsᴇ", callback_data="cls"),
                 ],[
                     InlineKeyboardButton("📣 ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}")
                 ],
@@ -567,8 +567,8 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🎛 ᴍᴇɴᴜ", callback_data="menu"),
-                    InlineKeyboardButton("❌ ᴄʟᴏsᴇ", callback_data="cls"),
+                    InlineKeyboardButton("♜ ᴍᴇɴᴜ", callback_data="menu"),
+                    InlineKeyboardButton("✘ ᴄʟᴏsᴇ", callback_data="cls"),
                 ],[
                     InlineKeyboardButton("📣 ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}")
                 ],
@@ -599,7 +599,7 @@ async def play(_, message: Message):
             while j < 10:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:25]}](https://youtube.com{results[j]['url_suffix']})\n"
                 toxxt += f" ├ ⌛ **Duration** - {results[j]['duration']}\n"
-                toxxt += f" └ ✈ _ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴜʙᴜɴᴛᴜ ᴄᴜsᴛᴏᴍ ᴄᴏʀᴇ_\n\n"
+                toxxt += f" └ ✈ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴜʙᴜɴᴛᴜ ᴄᴜsᴛᴏᴍ ᴄᴏʀᴇ 9\n\n"
                 j += 1            
             keyboard = InlineKeyboardMarkup(
                 [
@@ -632,7 +632,7 @@ async def play(_, message: Message):
 
 
             await message.reply_photo(
-                photo="https://telegra.ph/file/3252a626920cb787295a4.png",
+                photo="https://telegra.ph/file/bad69dc7929731b11e056.jpg",
                 caption=toxxt,
                 reply_markup=keyboard
             )
@@ -666,7 +666,7 @@ async def play(_, message: Message):
             keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🎛 ᴍᴇɴᴜ", callback_data="menu"),
+                    InlineKeyboardButton("♜ ᴍᴇɴᴜ", callback_data="menu"),
                     InlineKeyboardButton("✘ ᴄʟᴏsᴇ", callback_data="cls"),
                 ],[
                     InlineKeyboardButton("📣 ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}")
@@ -687,8 +687,8 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"🏷 **Judul:** [{title[:30]}]({url})\n⏱ **Durasi:** {duration}\n💡 **Status:** Antrian Ke `{position}`\n" \
-                   +f"🎧 **Permintaan:** {message.from_user.mention}",
+            caption=f"♜ **Title:** [{title[:30]}]({url})\n⌛ **Duration:** {duration}\n⌛ **Reporting:** Position on `{position}`\n" \
+                   +f"🎧 **Requested by:** {message.from_user.mention}",
             reply_markup=keyboard
         )
        
@@ -704,12 +704,12 @@ async def play(_, message: Message):
         try:
             callsmusic.pytgcalls.join_group_call(chat_id, file_path)
         except:
-            message.reply("**voice chat group tidak aktif, tidak dapat memutar lagu.**")
+            message.reply("**ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ɢʀᴏᴜᴘ ᴛɪᴅᴀᴋ ᴀᴋᴛɪғ, ᴛɪᴅᴀᴋ ᴅᴀᴘᴀᴛ ᴍᴇᴍᴜᴛᴀʀ ʟᴀɢᴜ.**")
             return
         await message.reply_photo(
             photo="final.png",
-            caption=f"🏷 **Judul:** [{title[:30]}]({url})\n⏱ **Durasi:** {duration}\n💡 **Status:** `Sedang Memutar`\n" \
-                   +f"🎧 **Permintaan:** {message.from_user.mention}",
+            caption=f"♜ **Title:** [{title[:30]}]({url})\n⌛ **Duration:** {duration}\n⌛ **Reporting:** `On playing`\n" \
+                   +f"🎧 **Requested by:** {message.from_user.mention}",
             reply_markup=keyboard
         )
         os.remove("final.png")
@@ -723,11 +723,11 @@ async def lol_cb(b, cb):
     try:
         x,query,useer_id = typed_.split("|")      
     except:
-        await cb.message.edit("❌ song not found")
+        await cb.message.edit("✘ Song not found")
         return
     useer_id = int(useer_id)
     if cb.from_user.id != useer_id:
-        await cb.answer("Anda bukan orang yang meminta untuk memutar lagu ini!", show_alert=True)
+        await cb.answer("ᴀɴᴅᴀ ʙᴜᴋᴀɴ ᴏʀᴀɴɢ ʏᴀɴɢ ᴍᴇᴍɪɴᴛᴀ ᴜɴᴛᴜᴋ ᴍᴇᴍᴜᴛᴀʀ ʟᴀɢᴜ ɪɴɪ!", show_alert=True)
         return
     #await cb.message.edit("🔁 **processing...**")
     x=int(x)
@@ -748,7 +748,7 @@ async def lol_cb(b, cb):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
         if (dur / 60) > DURATION_LIMIT:
-             await cb.message.edit(f"✘ Lagu dengan durasi lebih dari `{DURATION_LIMIT}` menit tidak dapat diputar.")
+             await cb.message.edit(f"✘ ʟᴀɢᴜ ᴅᴇɴɢᴀɴ ᴅᴜʀᴀsɪ ʟᴇʙɪʜ ᴅᴀʀɪ `{DURATION_LIMIT}` ᴍᴇɴɪᴛ ᴛɪᴅᴀᴋ ᴅᴀᴘᴀᴛ ᴅɪᴘᴜᴛᴀʀ.")
              return
     except:
         pass
@@ -764,7 +764,7 @@ async def lol_cb(b, cb):
     keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🎛 ᴍᴇɴᴜ", callback_data="menu"),
+                    InlineKeyboardButton("♜ ᴍᴇɴᴜ", callback_data="menu"),
                     InlineKeyboardButton("✘ ᴄʟᴏsᴇ", callback_data="cls"),
                 ],[
                     InlineKeyboardButton("📣 ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}")
@@ -788,8 +788,8 @@ async def lol_cb(b, cb):
         await cb.message.delete()
         await b.send_photo(chat_id,
         photo="final.png",
-        caption=f"🏷 **Judul:** [{title[:30]}]({url})\n⏱ **Durasi:** {duration}\n💡 **Status:** Antrian Ke `{position}`\n" \
-               +f"🎧 **Permintaan:** {r_by.mention}",
+        caption=f"♜ **Title:** [{title[:30]}]({url})\n⌛ **Duration:** {duration}\n⌛ **Reporting:** Position in `{position}`\n" \
+               +f"🎧 **Requested by:** {r_by.mention}",
         reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -808,8 +808,8 @@ async def lol_cb(b, cb):
         await cb.message.delete()
         await b.send_photo(chat_id,
         photo="final.png",
-        caption=f"🏷 **Judul:** [{title[:30]}]({url})\n⏱ **Durasi:** {duration}\n💡 **Status:** Sedang Memutar\n" \
-               +f"🎧 **Permintaan:** {r_by.mention}",
+        caption=f"♜ **Title:** [{title[:30]}]({url})\n⌛ **Duration:** {duration}\n⌛ **Reporting:** On playing\n" \
+               +f"🎧 **Requested by:** {r_by.mention}",
         reply_markup=keyboard,
         )
         os.remove("final.png")

@@ -57,7 +57,7 @@ async def dare(client, message):
         await message.reply_text("sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ...")
 
 
-@Client.on_message(command(["lyric", f"lyric@{bu}"]))
+@Client.on_message(command(["lyric", f"lyric@{BOT_USERNAME}"]))
 async def lirik(_, message):
     try:
         if len(message.command) < 2:

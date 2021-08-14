@@ -1,7 +1,7 @@
 {
     "name": "Cyber Music Bot",
     "logo": "https://telegra.ph/file/bad69dc7929731b11e056.jpg",
-    "description": "cyber music bot project allow you to stream music trought the telegram voice chat feature.",
+    "description": "Cyber Music project allow you to stream music trought the telegram voice chat feature.",
     "keywords": ["music", "voice chat", "telegram"],
     "repository": "https://github.com/aryazakaria01/CBMusicBot",
     "stack": "container",
@@ -30,9 +30,14 @@
             "value": "SaitamaHelper"
         },
         "BG_IMAGE": {
-            "description": "isi dengan link background image kalian",
+            "description": "fill with your link costum background image",
             "required": false,
             "value": "https://telegra.ph/file/ec11307dd8a3496d8dcbf.jpg"
+        },
+        "THUMB_IMG": {
+            "description": "fill with costum thumbnail image it's different with bg_image",
+            "required": false,
+            "value": "https://telegra.ph/file/14500969a4b584d1cd672.png"
         },
         "OWNER_NAME": {
             "description": "fill with your username without @",
@@ -54,11 +59,11 @@
         "DURATION_LIMIT": {
             "description": "max durasi untuk video yang diunduh (dalam menit).",
             "required": true,
-            "value": "30"
+            "value": "60"
         },
         "PMPERMIT": {
-            "description": "pm-permit untuk assistant.",
-            "required": true,
+            "description": "pm-permit for assistant.",
+            "required": false,
             "value": "ENABLE"
         },
         "UPDATES_CHANNEL": {

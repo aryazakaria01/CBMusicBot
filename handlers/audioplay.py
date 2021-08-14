@@ -68,5 +68,6 @@ async def stream(_, message: Message):
         await message.reply_photo(
         photo=f"{AUD_IMG}",
         reply_markup=keyboard,
-        caption=f"🎧 **ɴᴏᴡ ᴘʟᴀʏɪɴɢ** ᴀ sᴏɴɢ ʀᴇǫᴜᴇsᴛᴇᴅ ʙʏ {costumer}!\n\n✈ ᴘᴏᴡᴇʀᴇᴅ ʙʏ {bn}"),
+        caption=f"🎧 **ɴᴏᴡ ᴘʟᴀʏɪɴɢ** ᴀ sᴏɴɢ ʀᴇǫᴜᴇsᴛᴇᴅ ʙʏ {costumer}!\n\n✈ ᴘᴏᴡᴇʀᴇᴅ ʙʏ {bn}"
+        )   
         return await lel.delete()

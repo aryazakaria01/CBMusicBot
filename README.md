@@ -61,5 +61,5 @@ the easy way to host this bot, deploy to Heroku or Railway
 - [Arya Zakaria](https://github.com/aryazakaria01): Dev
 - [Laky](https://github.com/Laky-64) & [Andrew](https://github.com/AndrewLaneX): PyTgCalls
 - [Original Repo](https://github.com/suprojects/CallsMusic)
-- [Veez Music Bot](https://t.me/veezmusicbot) Our Music Bot
+- [Cyber Music Bot](https://t.me/CyberMusikBot) Our Music Bot
 - [RojSerBest](https://github.com/rojserbest) CallsMusic Developer

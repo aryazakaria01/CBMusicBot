@@ -8,7 +8,6 @@ from helpers.errors import DurationLimitError
 ydl_opts = {
     "format": "bestaudio[ext=m4a]",
     "format": "bestaudio/best",
-    "verbose": True,
     "geo-bypass": True,
     "nocheckcertificate": True,
     "outtmpl": "downloads/%(id)s.%(ext)s",

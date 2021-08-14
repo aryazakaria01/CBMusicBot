@@ -70,6 +70,9 @@ For deployment on railway you can see the full of [Necessary Variables Here](htt
 
 [![Deploy+on+Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/aryazakaria01/CBMusicBot&envs=SESSION_NAME,BOT_TOKEN,BOT_USERNAME,BOT_NAME,GROUP_SUPPORT,ASSISTANT_NAME,BG_IMAGE,UPDATES_CHANNEL,API_ID,PMPERMIT,API_HASH,SUDO_USERS,DURATION_LIMIT,THUMB_IMG)
 
+## Qovery Deployment 🔮
+Comming soon
+
 ### Credits 💖
 - [Arya Zakaria](https://github.com/aryazakaria01): Dev
 - [Laky](https://github.com/Laky-64) & [Andrew](https://github.com/AndrewLaneX): PyTgCalls

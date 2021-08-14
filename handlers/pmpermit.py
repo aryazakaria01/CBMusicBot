@@ -17,7 +17,7 @@ async def pmPermit(client: USER, message: Message):
                 return
             await USER.send_message(
                 message.chat.id,
-            f"✨ ʜᴇʟʟᴏ, ɪ'ᴍ ᴀ ᴏғғɪᴄɪᴀʟ **ᴍᴜsɪᴄ ᴀssɪsᴛᴀɴᴛ ᴏғ {BOT_NAME}.**\n\n☨ **ɴᴏᴛᴇs:**\n\n✘ ᴅᴏɴ'ᴛ sᴘᴀᴍ ᴍᴇssᴀɢᴇ.\n✘ ᴅᴏɴ'ᴛ sᴇɴᴅ ᴍᴇ ᴀɴʏᴛʜɪɴɢ ᴄᴏɴғɪᴅᴇɴᴛɪᴀʟ\n\n✘ ᴊᴏɪɴ ᴛᴏ @{UPDATES_CHANNEL} \n✘ ᴊᴏɪɴ ᴛᴏ @{GROUP_SUPPORT}\n\n👩🏻‍💻 ᴅᴇᴠ: @{OWNER_NAME}\n\n",
+            f"✨ ʜᴇʟʟᴏ, ɪ'ᴍ ᴀ ᴏғғɪᴄɪᴀʟ **ᴍᴜsɪᴄ ᴀssɪsᴛᴀɴᴛ ᴏғ {BOT_NAME}.**\n\n❗️ **notes:**\n\n⫸ don't spam message.\n⫸ don't send me anything confidential\n\n⨀ Join to @{UPDATES_CHANNEL} \n⨀ Join to @{GROUP_SUPPORT}\n\n👩🏻‍💻 Dev: @{OWNER_NAME}\n\n",
             )
             return
 
@@ -43,7 +43,7 @@ async def autopmPermiat(client: USER, message: Message):
     chat_id = message.chat.id
     if not chat_id in pchats:
         pchats.append(chat_id)
-        await message.reply_text("ᴀᴘᴘʀᴏᴠᴇᴅ ᴛᴏ ᴘᴍ ᴅᴜᴇ ᴛᴏ ᴏᴜᴛɢᴏɪɴɢ ᴍᴇssᴀɢᴇs")
+        await message.reply_text("approved to pm due to outgoing messages")
         return
     message.continue_propagation()    
     
@@ -52,7 +52,7 @@ async def pmPermiat(client: USER, message: Message):
     chat_id = message.chat.id
     if not chat_id in pchats:
         pchats.append(chat_id)
-        await message.reply_text("✔ ᴀᴘᴘʀᴏᴠᴇᴅ ᴛᴏ ᴘᴍ.")
+        await message.reply_text("✔ approved to pm.")
         return
     message.continue_propagation()    
     
@@ -62,6 +62,7 @@ async def rmpmPermiat(client: USER, message: Message):
     chat_id = message.chat.id
     if chat_id in pchats:
         pchats.remove(chat_id)
-        await message.reply_text("✘ ᴅɪsᴀᴘᴘʀᴏᴠᴇᴅ ᴛᴏ ᴘᴍ.")
+        await message.reply_text("✘ disapproved to pm.")
         return
     message.continue_propagation()
+    

@@ -32,24 +32,23 @@ async def _human_time_duration(seconds):
 @Client.on_message(command("start") & filters.private & ~filters.edited)
 async def start_(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>✨ **Welcome {message.from_user.first_name}** \n
-💭 **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) ᴀʟʟᴏᴡ ʏᴏᴜ ᴛᴏ ᴘʟᴀʏ ᴍᴜsɪᴄ ᴏɴ ɢʀᴏᴜᴘs ᴛʜʀᴏᴜɢʜ ᴛʜᴇ ɴᴇᴡ ᴛᴇʟᴇɢʀᴀᴍ's ᴠᴏɪᴄᴇ ᴄʜᴀᴛs!**
-
-💡 **ғɪɴᴅ ᴏᴜᴛ ᴀʟʟ ᴛʜᴇ ʙᴏᴛ's ᴄᴏᴍᴍᴀɴᴅs ᴀɴᴅ ʜᴏᴡ ᴛʜᴇʏ ᴡᴏʀᴋ ʙʏ ᴄʟɪᴄᴋɪɴɢ ᴏɴ ᴛʜᴇ » 📚 ᴄᴏᴍᴍᴀɴᴅs ʙᴜᴛᴛᴏɴ!**
-
-❓ **ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴀʟʟ ғᴇᴀᴛᴜʀᴇs ᴏғ ᴛʜɪs ʙᴏᴛ, ᴊᴜsᴛ ᴄʟɪᴄᴋ /help**
+        f"""<b>✨ **ᴡᴇʟᴄᴏᴍᴇ {message.from_user.first_name}** \n
+💭 **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) ᴀʟʟᴏᴡ ʏᴏᴜ ᴛᴏ ᴘʟᴀʏ ᴍᴜsɪᴄ ᴏɴ ɢʀᴏᴜᴘs ᴛʜʀᴏᴜɢʜ ᴛʜᴇ ɴᴇᴡ ᴛᴇʟᴇɢʀᴀᴍ's ᴠᴏɪᴄᴇ ᴄʜᴀᴛs !**
+💡 **ғɪɴᴅ ᴏᴜᴛ ᴀʟʟ ᴛʜᴇ ʙᴏᴛ's ᴄᴏᴍᴍᴀɴᴅs ᴀɴᴅ ʜᴏᴡ ᴛʜᴇ ᴡᴏʀᴋ ʙʏ ᴄʟɪᴄᴋɪɴɢ ᴏɴ ᴛʜᴇ » 📚 ᴄᴏᴍᴍᴀɴᴅs ʙᴜᴛᴛᴏɴ !**
+❓ **ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴀʟʟ ғᴇᴀᴛᴜʀᴇ ᴏғ ᴛʜɪs ʙᴏᴛ, ᴊᴜsᴛ ᴛʏᴘᴇ /help**
+✂ **ɪ ᴡᴀs ᴍᴀᴅᴇ ʙʏ ᴀʀʏᴀ ᴢᴀᴋᴀʀɪᴀ ғᴏʀ ᴘʟᴀʏɪɴɢ ᴍᴜsɪᴄ ᴏɴ ᴠᴄɢ**
 </b>""",
         reply_markup=InlineKeyboardMarkup(
             [ 
                 [
                     InlineKeyboardButton(
-                        "➕ ᴀᴅᴅ ᴍᴇ ᴛᴏ ɢʀᴏᴜᴘ ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+                        "➕ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
                 ],[
                     InlineKeyboardButton(
                          "📚 ᴄᴏᴍᴍᴀɴᴅs", url="https://t.me/CyberMusicProject/4"
                     ),
                     InlineKeyboardButton(
-                        "💝 ᴅᴏɴᴀᴛɪᴏɴ", url=f"https://t.me/{OWNER_NAME}")
+                        "💝 ᴅᴏɴᴀᴛᴇ", url=f"https://t.me/{OWNER_NAME}")
                 ],[
                     InlineKeyboardButton(
                         "👥 ᴏғғɪᴄɪᴀʟ ɢʀᴏᴜᴘ", url=f"https://t.me/{GROUP_SUPPORT}"
@@ -58,7 +57,7 @@ async def start_(client: Client, message: Message):
                         "📣 ᴏғғɪᴄɪᴀʟ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}")
                 ],[
                     InlineKeyboardButton(
-                        "🧪 sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ 🧪", url="https://github.com/aryazakaria01/CBMusicBot"
+                        "🧪 sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ 🧪", url="https://github.com/levina-lab/VeezMusic"
                     )
                 ]
             ]
@@ -73,12 +72,12 @@ async def start(client: Client, message: Message):
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
     await message.reply_text(
-        f"""✅ **bot is running**\n<b>💠 **uptime:**</b> `{uptime}`""",
+        f"""✔ **ʙᴏᴛ ɪs ʀᴜɴɴɪɴɢ**\n<b>☣ **ᴜᴘᴛɪᴍᴇ:**</b> `{uptime}`""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "✨ ɢʀᴏᴜᴘ", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "☢ ɢʀᴏᴜᴘ", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
                         "📣 ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}"
@@ -88,32 +87,73 @@ async def start(client: Client, message: Message):
         )
     )
 
-
-@Client.on_message(command("help") & filters.private & ~filters.edited)
+@Client.on_message(command(["help", f"help@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 async def help(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>Hello {message.from_user.mention()}✨
-\n👥 **command for all users:**
-\n/play (song name) - To play the song you requested from youtube
-/playlist - To show the list of all music for streaming
-/current - To show the song in streaming
-/song (song name) - To download song from youtube
-/search (video name) - To search video from youtube detailed
-/vsong (video name) - To download video from youtube detailed
-\n👷🏻‍♂️ **command for admins:**
-\n/player - Open music player settings panel
-/pause - Pause the music streaming
-/resume - Resume the music was paused
-/skip - For skip to the next song
-/end - For stop music streaming
-/userbotjoin - invite the assistant for join to your group
-/reload - For refresh the admin list
+        f"""<b>☢ ʜᴇʟʟᴏ {message.from_user.mention()}, ᴘʟᴇᴀsᴇ ᴛᴀᴘ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ sᴇᴇ ᴛʜᴇ ʜᴇʟᴘ ᴍᴇssᴀɢᴇ ʏᴏᴜ ᴄᴀɴ ʀᴇᴀᴅ ғᴏʀ ᴜsɪɴɢ ᴛʜɪs ʙᴏᴛ</b>""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="✔ ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴍᴇ", url=f"https://t.me/{BOT_USERNAME}?start=help"
+                    )
+                ]
+            ]
+        )
+    )
+
+@Client.on_message(command("help") & filters.private & ~filters.edited)
+async def help_(client: Client, message: Message):
+    await message.reply_text(
+        f"""<b>Hello {message.from_user.mention()}, welcome to help menu ✨
+\n📙 HOW TO USE ME ?
+\n1. first add me to your group.
+2. promote me as admin and give all permission.
+3. then, add @{ASSISTANT_NAME} to your group or type /userbotjoin.
+3. make sure you turn on the voice chat first before start playing music.
+\n💁🏻‍♀️ **commands for all user:**
+\n/play (song name) - play song from youtube
+/stream (reply to audio) - play song using audio file
+/playlist - show the list song in queue
+/current - show the song in streaming
+/song (song name) - download song from youtube
+/search (video name) - search video from youtube detailed
+/vsong (video name) - download video from youtube detailed
+/vk (song name) - download song from inline mode
+\n👷🏻‍♂️ **commands for admins:**
+\n/player - open music player settings panel
+/pause - pause the music streaming
+/resume - resume the music was paused
+/skip - skip to the next song
+/end - stop music streaming
+/userbotjoin - invite assistant join to your group
+/reload - for refresh the admin list
+/cache - for cleared admin cache
+/musicplayer (on / off) - disable / enable music player in your group
+\n🎧 channel streaming commands:
+\n/cplay - stream music on channel voice chat
+/cplayer - show the song in streaming
+/cpause - pause the streaming music
+/cresume - resume the streaming was paused
+/cskip - skip streaming to the next song
+/cend - end the streaming music
+/admincache - refresh the admin cache
+\n🧙‍♂️ command for sudo users:
+\n/userbotleaveall - order the assistant to leave from all group
+/gcast - send a broadcast message trought the assistant
+\n🎊 **commands for fun:**
+\n/lyric - (song name) lyrics scrapper
+/chika - check it by yourself
+/wibu - check it by yourself
+/asupan - check it by yourself
+/truth - check it by yourself
+/dare - check it by yourself
 </b>""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "✨ ɢʀᴏᴜᴘ", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "☣ ɢʀᴏᴜᴘ", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
                         "📣 ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}"
@@ -121,7 +161,7 @@ async def help(client: Client, message: Message):
                 ],
                 [
                     InlineKeyboardButton(
-                        "👩🏻‍💻 ᴅᴇᴠᴇʟᴏᴘᴇʀ", url=f"https://t.me/{OWNER_NAME}"
+                        "♞🏻‍💻 ᴅᴇᴠᴇʟᴏᴘᴇʀ", url=f"https://t.me/{OWNER_NAME}"
                     )
                 ]
             ]
@@ -132,11 +172,11 @@ async def help(client: Client, message: Message):
 @Client.on_message(command(["ping", f"ping@{BOT_USERNAME}"]) & ~filters.edited)
 async def ping_pong(client: Client, message: Message):
     start = time()
-    m_reply = await message.reply_text("pinging...")
+    m_reply = await message.reply_text("ᴘɪɴɢɪɴɢ...")
     delta_ping = time() - start
     await m_reply.edit_text(
-        "🏓 `ᴘᴏɴɢ!!`\n"
-        f"❆ `{delta_ping * 1000:.3f} ms`"
+        "✈ `ᴘᴏɴɢ!!`\n"
+        f"☣ `{delta_ping * 1000:.3f} ᴍs`"
     )
 
 
@@ -148,6 +188,6 @@ async def get_uptime(client: Client, message: Message):
     uptime = await _human_time_duration(int(uptime_sec))
     await message.reply_text(
         "🤖 ʙᴏᴛ sᴛᴀᴛᴜs:\n"
-        f"• **ᴜᴘᴛɪᴍᴇ:** `{uptime}`\n"
-        f"• **sᴛᴀʀᴛ ᴛɪᴍᴇ:** `{START_TIME_ISO}`"
+        f"➤ **ᴜᴘᴛɪᴍᴇ:** `{uptime}`\n"
+        f"➤ **sᴛᴀʀᴛ ᴛɪᴍᴇ:** `{START_TIME_ISO}`"
     )

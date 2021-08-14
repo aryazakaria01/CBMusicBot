@@ -1,6 +1,3 @@
-# this module i created only for playing music using audio file, idk, because the audio player on play.py module not working so this is the alternative
-# audio play function
-
 from os import path
 
 from pyrogram import Client

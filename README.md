@@ -11,6 +11,7 @@
     <a href="https://github.com/aryazakaria01/CBMusicBot/issues"> <img src="https://img.shields.io/github/issues/aryazakaria01/CBMusicBot?color=red&logo=github&logoColor=blue&style=flat-square" /></a>
     <a href="https://github.com/aryazakaria01/CBMusicBot/network/members"> <img src="https://img.shields.io/github/forks/aryazakaria01/CBMusicBot?color=red&logo=github&logoColor=blue&style=flat-square" /></a>  
     <a href="https://github.com/aryazakaria01/CBMusicBot/network/members"> <img src="https://img.shields.io/github/stars/aryazakaria01/CBMusicBot?color=red&logo=github&logoColor=blue&style=flat-square" /></a>  
+[![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://github.com/aryazakaria01)</br>
 </p>
 
 <h3>Requirements 📝</h3>

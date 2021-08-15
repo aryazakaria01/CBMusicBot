@@ -593,10 +593,9 @@ async def play(_, message: Message):
         try:
             toxxt = "✘ __ᴄʜᴏᴏsᴇ ᴀ sᴏɴɢ ᴛᴏ ᴘʟᴀʏ:__\n\n"
             j = 0
-            useer=user_name
-            # 0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟
-            emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"]
-            while j < 10:
+            useer=user_name           
+            emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣", "6️⃣", "7️⃣"]
+            while j < 6:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:25]}](https://youtube.com{results[j]['url_suffix']})\n"
                 toxxt += f" ├ ⌛ **ᴅᴜʀᴀᴛɪᴏɴ** - {results[j]['duration']}\n"
                 toxxt += f" └ ✈ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴜʙᴜɴᴛᴜ ᴄᴜsᴛᴏᴍ ᴄᴏʀᴇ 9\n\n"
@@ -606,24 +605,14 @@ async def play(_, message: Message):
                     [
                         InlineKeyboardButton("1️⃣", callback_data=f'plll 0|{query}|{user_id}'),
                         InlineKeyboardButton("2️⃣", callback_data=f'plll 1|{query}|{user_id}'),
-                    ],
-                    [
                         InlineKeyboardButton("3️⃣", callback_data=f'plll 2|{query}|{user_id}'),
+                    ],
+                    [
                         InlineKeyboardButton("4️⃣", callback_data=f'plll 3|{query}|{user_id}'),
-                        
-                    ],
-                    [
                         InlineKeyboardButton("5️⃣", callback_data=f'plll 4|{query}|{user_id}'),
+                    ],
+                    [
                         InlineKeyboardButton("6️⃣", callback_data=f'plll 5|{query}|{user_id}'),
-
-                    ],
-                    [
-                        InlineKeyboardButton("7️⃣", callback_data=f'plll 6|{query}|{user_id}'),
-                        InlineKeyboardButton("8️⃣", callback_data=f'plll 7|{query}|{user_id}'),
-                    ],
-                    [
-                        InlineKeyboardButton("9️⃣", callback_data=f'plll 8|{query}|{user_id}'),
-                        InlineKeyboardButton("🔟", callback_data=f'plll 9|{query}|{user_id}'),
                     ],
                     [InlineKeyboardButton(text="✘ ᴄʟᴏsᴇ", callback_data="cls")],
                 ]
@@ -632,15 +621,15 @@ async def play(_, message: Message):
 
 
             await message.reply_photo(
-                photo="https://telegra.ph/file/bad69dc7929731b11e056.jpg",
+                photo=f"{THUMB_IMG}",
                 caption=toxxt,
                 reply_markup=keyboard
             )
 
             await lel.delete()
-            # veez project
+            # cyber project
             return
-            # veez project
+            # cyber project
         except:
             await lel.edit("__ɴᴏ ᴍᴏʀᴇ ʀᴇsᴜʟᴛs, sᴛᴀʀᴛɪɴɢ ᴛᴏ ᴘʟᴀʏɪɴɢ...__")
                         

@@ -586,10 +586,10 @@ async def play(_, message: Message):
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         
         try:
-          results = YoutubeSearch(query, max_results=10).to_dict()
+          results = YoutubeSearch(query, max_results=6).to_dict()
         except:
           await lel.edit("**ᴀɴᴅᴀ ᴛɪᴅᴀᴋ ᴍᴇᴍʙᴇʀɪᴋᴀɴ ᴊᴜᴅᴜʟ ʟᴀɢᴜ ᴀᴘᴀᴘᴜɴ !**")
-        # veez project
+        # cyber project
         try:
             toxxt = "✘ __ᴄʜᴏᴏsᴇ ᴀ sᴏɴɢ ᴛᴏ ᴘʟᴀʏ:__\n\n"
             j = 0

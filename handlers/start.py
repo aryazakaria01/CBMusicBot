@@ -132,6 +132,8 @@ async def help_(client: Client, message: Message):
 /userbotjoin - invite assistant join to your group
 /reload - for refresh the admin list
 /cache - for cleared admin cache
+/auth - authorized user for using music bot
+/deauth - unauthorized for using music bot
 /musicplayer (on / off) - disable / enable music player in your group
 \n🎧 channel streaming commands:
 \n/cplay - stream music on channel voice chat

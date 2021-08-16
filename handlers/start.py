@@ -58,6 +58,9 @@ async def start_(client: Client, message: Message):
                     ),
                     InlineKeyboardButton(
                         "📣 ᴏғғɪᴄɪᴀʟ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}")               
+                 ],[
+                    InlineKeyboardButton(
+                        "🧪 sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ 🧪", url="https://github.com/aryazakaria01/CBMusicBot"
                     )
                 ]
             ]

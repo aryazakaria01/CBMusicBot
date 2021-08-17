@@ -51,7 +51,7 @@ async def rem(USER, message):
     except:
         await message.reply_text(
             f"<b>User couldn't leave your group! May be floodwaits."
-            "\n\nOr manually kick me from to your Group</b>",
+            "\n\nOr manually kick me from your Group</b>",
         )
         return
     

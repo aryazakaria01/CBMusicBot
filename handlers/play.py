@@ -724,7 +724,7 @@ async def lol_cb(b, cb):
         useer_name = cb.message.reply_to_message.from_user.first_name
     except:
         useer_name = cb.message.from_user.first_name
-    results = YoutubeSearch(query, max_results=10).to_dict()
+    results = YoutubeSearch(query, max_results=6).to_dict()
     resultss=results[x]["url_suffix"]
     title=results[x]["title"][:25]
     thumbnail=results[x]["thumbnails"][0]

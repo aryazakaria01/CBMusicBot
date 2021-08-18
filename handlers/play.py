@@ -39,7 +39,7 @@ def cb_admin_check(func: Callable) -> Callable:
         if cb.from_user.id in admemes:
             return await func(client, cb)
         else:
-            await cb.answer("you not allowed to do this!", show_alert=True)
+            await cb.answer("✘ ʏᴏᴜ ɴᴏᴛ ᴀʟʟᴏᴡᴇᴅ ᴛᴏ ᴅᴏ ᴛʜɪs sᴡᴇᴇᴛʜᴇᴀʀᴛ!", show_alert=True)
             return
     return decorator                                                                       
                                           
@@ -114,36 +114,36 @@ async def playlist(client, message):
         return
     queue = que.get(message.chat.id)
     if not queue:
-        await message.reply_text("**nothing in streaming!**")
+        await message.reply_text("**✘ ɴᴏᴛʜɪɴɢ ɪɴ sᴛʀᴇᴀᴍɪɴɢ!**")
     temp = []
     for t in queue:
         temp.append(t)
     now_playing = temp[0][0]
     by = temp[0][1].mention(style="md")
-    msg = "**Lagu Yang Sedang dimainkan** di {}".format(message.chat.title)
+    msg = "**sᴏɴɢ ᴄᴜʀʀᴇɴᴛʟʏ ᴘʟᴀʏɪɴɢ** ᴏɴ {}".format(message.chat.title)
     msg += "\n• "+ now_playing
-    msg += "\n• Atas permintaan "+by
+    msg += "\n• ᴜᴘᴏɴ ʀᴇǫᴜᴇsᴛ "+by
     temp.pop(0)
     if temp:
         msg += "\n\n"
-        msg += "**Antrian Lagu**"
+        msg += "**sᴏɴɢ ǫᴜᴇᴜᴇ**"
         for song in temp:
             name = song[0]
             usr = song[1].mention(style="md")
             msg += f"\n• {name}"
-            msg += f"\n• Atas permintaan {usr}\n"
+            msg += f"\n• ᴜᴘᴏɴ ʀᴇǫᴜᴇsᴛ {usr}\n"
     await message.reply_text(msg)
 
 # ============================= Settings =========================================
 def updated_stats(chat, queue, vol=100):
     if chat.id in callsmusic.pytgcalls.active_calls:
-        stats = "Pengaturan dari **{}**".format(chat.title)
+        stats = "Settings of **{}**".format(chat.title)
         if len(que) > 0:
             stats += "\n\n"
-            stats += "Volume: {}%\n".format(vol)
-            stats += "Lagu dalam antrian: `{}`\n".format(len(que))
-            stats += "Sedang memutar lagu: **{}**\n".format(queue[0][0])
-            stats += "Atas permintaan: {}".format(queue[0][1].mention)
+            stats += "ᴠᴏʟᴜᴍᴇ: {}%\n".format(vol)
+            stats += "sᴏɴɢs ɪɴ ǫᴜᴇᴜᴇ: `{}`\n".format(len(que))
+            stats += "ᴘʟᴀʏɪɴɢ ᴀ sᴏɴɢ: **{}**\n".format(queue[0][0])
+            stats += "ᴜᴘᴏɴ ʀᴇǫᴜᴇsᴛ: {}".format(queue[0][1].mention)
     else:
         stats = None
     return stats
@@ -162,10 +162,10 @@ def r_ply(type_):
                 InlineKeyboardButton("⏭", "skip")
             ],
             [
-                InlineKeyboardButton("📖 PlayList", "playlist"),
+                InlineKeyboardButton("📖 ᴘʟᴀʏʟɪsᴛ", "playlist"),
             ],
             [       
-                InlineKeyboardButton("🗑 Close", "cls")
+                InlineKeyboardButton("✘ ᴄʟᴏsᴇ", "cls")
             ]        
         ]
     )
@@ -179,7 +179,7 @@ async def ee(client, message):
     if stats:
         await message.reply(stats)              
     else:
-        await message.reply("**turn on the voice chat first!**")
+        await message.reply("**ᴛᴜʀɴ ᴏɴ ᴛʜᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ғɪʀsᴛ!**")
 
 
 @Client.on_message(command(["player", f"player@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
@@ -197,7 +197,7 @@ async def settings(client, message):
         else:
             await message.reply(stats, reply_markup=r_ply("play"))
     else:
-        await message.reply("**please turn on the voice chat first.**")
+        await message.reply("**ᴘʟᴇᴀsᴇ ᴛᴜʀɴ ᴏɴ ᴛʜᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ғɪʀsᴛ.**")
 
 
 @Client.on_message(
@@ -212,34 +212,34 @@ async def hfmm(_, message):
         return
     if len(message.command) != 2:
         await message.reply_text(
-            "**i'm only know** `/musicplayer on` **and** `/musicplayer off`"
+            "**ɪ'ᴍ ᴏɴʟʏ ᴋɴᴏᴡ** `/musicplayer on` **ᴀɴᴅ** `/musicplayer off`"
         )
         return
     status = message.text.split(None, 1)[1]
     message.chat.id
     if status == "ON" or status == "on" or status == "On":
-        lel = await message.reply("`processing...`")
+        lel = await message.reply("`☢ ᴘʀᴏᴄᴇssɪɴɢ...`")
         if not message.chat.id in DISABLED_GROUPS:
-            await lel.edit("**music player already activated.**")
+            await lel.edit("**ᴍᴜsɪᴄ ᴘʟᴀʏᴇʀ ᴀʟʀᴇᴀᴅʏ ᴀᴄᴛɪᴠᴀᴛᴇᴅ.**")
             return
         DISABLED_GROUPS.remove(message.chat.id)
         await lel.edit(
-            f"✅ **music player has been activated in this chat.** {message.chat.id}"
+            f"✔ **ᴍᴜsɪᴄ ᴘʟᴀʏᴇʀ ʜᴀs ʙᴇᴇɴ ᴀᴄᴛɪᴠᴀᴛᴇᴅ ɪɴ ᴛʜɪs ᴄʜᴀᴛ.** {message.chat.id}"
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
-        lel = await message.reply("`processing...`")
+        lel = await message.reply("`☢ ᴘʀᴏᴄᴇssɪɴɢ...`")
         
         if message.chat.id in DISABLED_GROUPS:
-            await lel.edit("**music player already deactivated.**")
+            await lel.edit("**ᴍᴜsɪᴄ ᴘʟᴀʏᴇʀ ᴀʟʀᴇᴀᴅʏ ᴅᴇᴀᴄᴛɪᴠᴀᴛᴇᴅ.**")
             return
         DISABLED_GROUPS.append(message.chat.id)
         await lel.edit(
-            f"✅ **music player has been deactivated in this chat.** {message.chat.id}"
+            f"✔ **ᴍᴜsɪᴄ ᴘʟᴀʏᴇʀ ʜᴀs ʙᴇᴇɴ ᴅᴇᴀᴄᴛɪᴠᴀᴛᴇᴅ ɪɴ ᴛʜɪs ᴄʜᴀᴛ.** {message.chat.id}"
         )
     else:
         await message.reply_text(
-            "**i'm only know** `/musicplayer on` **and** `/musicplayer off`"
+            "**ɪ'ᴍ ᴏɴʟʏ ᴋɴᴏᴡ** `/musicplayer on` **ᴀɴᴅ** `/musicplayer off`"
         )
 
 
@@ -254,24 +254,24 @@ async def p_cb(b, cb):
     if type_ == "playlist":
         queue = que.get(cb.message.chat.id)
         if not queue:
-            await cb.message.edit("**nothing is playing ❗**")
+            await cb.message.edit("**✘ ɴᴏᴛʜɪɴɢ ɪs ᴘʟᴀʏɪɴɢ ❗**")
         temp = []
         for t in queue:
             temp.append(t)
         now_playing = temp[0][0]
         by = temp[0][1].mention(style="md")
-        msg = "**Now playing** in {}".format(cb.message.chat.title)
-        msg += "\n• " + now_playing
-        msg += "\n• Req by " + by
+        msg = "**ɴᴏᴡ ᴘʟᴀʏɪɴɢ** ɪɴ {}".format(cb.message.chat.title)
+        msg += "\n➤ " + now_playing
+        msg += "\n➤ ʀᴇǫᴜᴇsᴛ ʙʏ " + by
         temp.pop(0)
         if temp:
             msg += "\n\n"
-            msg += "**Antrian Lagu**"
+            msg += "**sᴏɴɢ ǫᴜᴇᴜᴇ**"
             for song in temp:
                 name = song[0]
                 usr = song[1].mention(style="md")
-                msg += f"\n• {name}"
-                msg += f"\n• Req by {usr}\n"
+                msg += f"\n➤ {name}"
+                msg += f"\n➤ Req by {usr}\n"
         await cb.message.edit(msg)      
 
 
@@ -300,11 +300,11 @@ async def m_cb(b, cb):
                 ) or (
                     callsmusic.pytgcalls.active_calls[chet_id] == "paused"
                 ):
-            await cb.answer("assistant is not connected to voice chat!", show_alert=True)
+            await cb.answer("✘ ᴀssɪsᴛᴀɴᴛ ɪs ɴᴏᴛ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴛᴏ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ!", show_alert=True)
         else:
             callsmusic.pytgcalls.pause_stream(chet_id)
             
-            await cb.answer("music paused!")
+            await cb.answer("✔ ᴍᴜsɪᴄ ᴘᴀᴜsᴇᴅ!")
             await cb.message.edit(updated_stats(m_chat, qeue), reply_markup=r_ply("play"))
                 
     elif type_ == "play":       
@@ -313,33 +313,33 @@ async def m_cb(b, cb):
             ) or (
                 callsmusic.pytgcalls.active_calls[chet_id] == "playing"
             ):
-                await cb.answer("assistant is not connected to voice chat!", show_alert=True)
+                await cb.answer("✘ ᴀssɪsᴛᴀɴᴛ ɪs ɴᴏᴛ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴛᴏ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ!", show_alert=True)
         else:
             callsmusic.pytgcalls.resume_stream(chet_id)
-            await cb.answer("music resumed!")
+            await cb.answer("✔ ᴍᴜsɪᴄ ʀᴇsᴜᴍᴇᴅ!")
             await cb.message.edit(updated_stats(m_chat, qeue), reply_markup=r_ply("pause"))
 
     elif type_ == "playlist":
         queue = que.get(cb.message.chat.id)
         if not queue:   
-            await cb.message.edit("nothing in streaming!")
+            await cb.message.edit("✘ ɴᴏᴛʜɪɴɢ ɪɴ sᴛʀᴇᴀᴍɪɴɢ!")
         temp = []
         for t in queue:
             temp.append(t)
         now_playing = temp[0][0]
         by = temp[0][1].mention(style="md")
-        msg = "**Lagu Yang Sedang dimainkan** di {}".format(cb.message.chat.title)
-        msg += "\n• "+ now_playing
-        msg += "\n• Atas permintaan "+by
+        msg = "**sᴏɴɢ ᴄᴜʀʀᴇɴᴛʟʏ ᴘʟᴀʏɪɴɢ** ᴏɴ {}".format(cb.message.chat.title)
+        msg += "\n➤ "+ now_playing
+        msg += "\n➤ ᴜᴘᴏɴ ʀᴇǫᴜᴇsᴛ "+by
         temp.pop(0)
         if temp:
              msg += "\n\n"
-             msg += "**Antrian Lagu**"
+             msg += "**sᴏɴɢ ǫᴜᴇᴜᴇ**"
              for song in temp:
                  name = song[0]
                  usr = song[1].mention(style="md")
-                 msg += f"\n• {name}"
-                 msg += f"\n• Atas permintaan {usr}\n"
+                 msg += f"\n➤ {name}"
+                 msg += f"\n➤ ᴜᴘᴏɴ ʀᴇǫᴜᴇsᴛ {usr}\n"
         await cb.message.edit(msg)      
                       
     elif type_ == "resume":     
@@ -348,10 +348,10 @@ async def m_cb(b, cb):
             ) or (
                 callsmusic.pytgcalls.active_calls[chet_id] == "playing"
             ):
-                await cb.answer("voice chat is not connected or already playing", show_alert=True)
+                await cb.answer("✘ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ɪs ɴᴏᴛ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴏʀ ᴀʟʀᴇᴀᴅʏ ᴘʟᴀʏɪɴɢ", show_alert=True)
         else:
             callsmusic.pytgcalls.resume_stream(chet_id)
-            await cb.answer("music resumed!")
+            await cb.answer("✔ ᴍᴜsɪᴄ ʀᴇsᴜᴍᴇᴅ!")
      
     elif type_ == "puse":         
         if (
@@ -359,19 +359,19 @@ async def m_cb(b, cb):
                 ) or (
                     callsmusic.pytgcalls.active_calls[chet_id] == "paused"
                 ):
-            await cb.answer("voice chat is not connected or already paused", show_alert=True)
+            await cb.answer("✘ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ɪs ɴᴏᴛ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴏʀ ᴀʟʀᴇᴀᴅʏ ᴘᴀᴜsᴇᴅ", show_alert=True)
         else:
             callsmusic.pytgcalls.pause_stream(chet_id)
             
-            await cb.answer("music paused!")
+            await cb.answer("✔ ᴍᴜsɪᴄ ᴘᴀᴜsᴇᴅ!")
 
     elif type_ == "cls":          
-        await cb.answer("closed menu")
+        await cb.answer("✔ ᴄʟᴏsᴇᴅ ᴍᴇɴᴜ")
         await cb.message.delete()       
 
     elif type_ == "menu":  
         stats = updated_stats(cb.message.chat, qeue)  
-        await cb.answer("menu opened")
+        await cb.answer("✔ ᴍᴇɴᴜ ᴏᴘᴇɴᴇᴅ")
         marr = InlineKeyboardMarkup(
             [
                 [
@@ -382,11 +382,11 @@ async def m_cb(b, cb):
                 
                 ],
                 [
-                    InlineKeyboardButton("📖 PlayList", "playlist"),
+                    InlineKeyboardButton("📖 ᴘʟᴀʏʟɪsᴛ", "playlist"),
                 
                 ],
                 [       
-                    InlineKeyboardButton("🗑 Close", "cls")
+                    InlineKeyboardButton("✘ ᴄʟᴏsᴇ", "cls")
                 ]        
             ]
         )
@@ -396,14 +396,14 @@ async def m_cb(b, cb):
         if qeue:
             qeue.pop(0)
         if chet_id not in callsmusic.pytgcalls.active_calls:
-            await cb.answer("assistant is not connected to voice chat!", show_alert=True)
+            await cb.answer("✘ ᴀssɪsᴛᴀɴᴛ ɪs ɴᴏᴛ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴛᴏ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ!", show_alert=True)
         else:
             callsmusic.queues.task_done(chet_id)
 
             if callsmusic.queues.is_empty(chet_id):
                 callsmusic.pytgcalls.leave_group_call(chet_id)
 
-                await cb.message.edit("• no more playlist\n• leaving voice chat")
+                await cb.message.edit("✘ ɴᴏ ᴍᴏʀᴇ ᴘʟᴀʏʟɪsᴛ\n✔ ʟᴇᴀᴠɪɴɢ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ")
             else:
                 callsmusic.pytgcalls.change_stream(
                     chet_id, callsmusic.queues.get(chet_id)["file"]
@@ -411,7 +411,7 @@ async def m_cb(b, cb):
                 await cb.answer("skipped")
                 await cb.message.edit((m_chat, qeue), reply_markup=r_ply(the_data))
                 await cb.message.reply_text(
-                    f"⫸ skipped track\n⫸ now playing : **{qeue[0][0]}**"
+                    f"✔ sᴋɪᴘᴘᴇᴅ ᴛʀᴀᴄᴋ\n✔ ɴᴏᴡ ᴘʟᴀʏɪɴɢ : **{qeue[0][0]}**"
                 )
 
     elif type_ == "leave":
@@ -422,9 +422,9 @@ async def m_cb(b, cb):
                 pass
 
             callsmusic.pytgcalls.leave_group_call(chet_id)
-            await cb.message.edit("⏹ **music stopped!**")
+            await cb.message.edit("✔ **ᴍᴜsɪᴄ sᴛᴏᴘᴘᴇᴅ!**")
         else:
-            await cb.answer("assistant is not connected to voice chat!", show_alert=True)
+            await cb.answer("✘ ᴀssɪsᴛᴀɴᴛ ɪs ɴᴏᴛ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴛᴏ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ!", show_alert=True)
 
 
 @Client.on_message(command("play") & other_filters)
@@ -433,7 +433,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return    
-    lel = await message.reply("🔄 **processing...**")
+    lel = await message.reply("☢ **ᴘʀᴏᴄᴇssɪɴɢ...**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
     try:
@@ -450,7 +450,7 @@ async def play(_, message: Message):
             if administrator == message.from_user.id:
                 if message.chat.title.startswith("Channel Music: "):
                     await lel.edit(
-                        f"<b>please add {user.first_name} to your channel.</b>",
+                        f"<b>ᴘʟᴇᴀsᴇ ᴀᴅᴅ {user.first_name} ᴛᴏ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ.</b>",
                     )
                     pass
                 try:

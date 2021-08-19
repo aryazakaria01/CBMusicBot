@@ -152,7 +152,7 @@ async def help_(client: Client, message: Message):
 /asupan - check it by yourself
 /truth - check it by yourself
 /dare - check it by yourself
-</b>""",,
+</b>""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [

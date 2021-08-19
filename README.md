@@ -1,6 +1,6 @@
 <h2 align="centre">🎶 Cyber Music Bot 🎶</h2>
 
-### Veez Music Project is a bot for playing music on telegram voice chat group.
+### Cyber Music is a telegram bot project that's allow you to play music on telegram voice chat group.
 
 ### POWERED BY [PYTGCALLS](https://github.com/pytgcalls/pytgcalls) 
 

@@ -29,10 +29,10 @@
 
 - `/play <song name>` - play song you requested
 - `/playlist` - Show now playing list
-- `/current` - Show now playing
 - `/song <song name>` - download songs you want quickly
 - `/search <query>` - search videos on youtube with details
 - `/vsong <song name>` - download videos you want quickly
+- `/lyric <song name>` - lyrics scrapper
 
 #### Admins Only 👷‍♂️
 - `/player` - open music player settings panel

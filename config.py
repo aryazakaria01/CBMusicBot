@@ -25,7 +25,7 @@ OWNER_NAME = getenv("OWNER_NAME", "Badboyanim") # isi dengan username kamu tanpa
 DEV_NAME = getenv("DEV_NAME", "Badboyanim")
 PMPERMIT = getenv("PMPERMIT", None)
 
-DURATION_LIMIT = int(getenv("DURATION_LIMIT", "60"))
+DURATION_LIMIT = int(getenv("DURATION_LIMIT", "250"))
 
 COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/ ! .").split())
 

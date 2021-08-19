@@ -118,10 +118,10 @@ async def help_(client: Client, message: Message):
 \n/play (song name) - play song from youtube
 /stream (reply to audio) - play song using audio file
 /playlist - show the list song in queue
-/current - show the song in streaming
 /song (song name) - download song from youtube
 /search (video name) - search video from youtube detailed
 /vsong (video name) - download video from youtube detailed
+/lyric - (song name) lyrics scrapper
 /vk (song name) - download song from inline mode
 \n👷🏻‍♂️ **commands for admins:**
 \n/player - open music player settings panel
@@ -147,13 +147,12 @@ async def help_(client: Client, message: Message):
 \n/userbotleaveall - order the assistant to leave from all group
 /gcast - send a broadcast message trought the assistant
 \n🎊 **commands for fun:**
-\n/lyric - (song name) lyrics scrapper
-/chika - check it by yourself
+\n/chika - check it by yourself
 /wibu - check it by yourself
 /asupan - check it by yourself
 /truth - check it by yourself
 /dare - check it by yourself
-</b>""",
+</b>""",,
         reply_markup=InlineKeyboardMarkup(
             [
                 [

@@ -1,5 +1,5 @@
-# Copyright (C) 2021 By VeezProject
-# Originally written by levina on github
+# Copyright (C) 2021 By CyberProject
+# Originally written by Arya Zakaria on github
 # Broadcast function
 
 
@@ -9,7 +9,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Dialog, Chat, Message
 from pyrogram.errors import UserAlreadyParticipant
 
-from callsmusic.callsmusic import client as veez
+from callsmusic.callsmusic import client as cyber
 from config import SUDO_USERS
 
 @Client.on_message(filters.command(["gcast"]))
@@ -19,17 +19,17 @@ async def broadcast(_, message: Message):
     if message.from_user.id not in SUDO_USERS:
         return
     else:
-        wtf = await message.reply("`starting broadcast...`")
+        wtf = await message.reply("`Starting broadcast...`")
         if not message.reply_to_message:
-            await wtf.edit("please reply to a message to start broadcast!")
+            await wtf.edit("Please reply to a message to start broadcast!")
             return
         lmao = message.reply_to_message.text
         async for dialog in veez.iter_dialogs():
             try:
                 await veez.send_message(dialog.chat.id, lmao)
                 sent = sent+1
-                await wtf.edit(f"`broadcasting...` \n\n**sent to:** `{sent}` chats \n**failed in:** {failed} chats")
+                await wtf.edit(f"`Broadcasting...` \n\n**Sent to:** `{sent}` chats \n**Failed in:** {failed} chats")
                 await asyncio.sleep(3)
             except:
                 failed=failed+1
-        await message.reply_text(f"`gcast succesfully` \n\n**sent to:** `{sent}` chats \n**failed in:** {failed} chats")
+        await message.reply_text(f"`Gcast succesfully` \n\n**Sent to:** `{sent}` chats \n**Failed in:** {failed} chats")

@@ -30,7 +30,7 @@
             "value": "SaitamaHelper"
         },
         "BG_IMAGE": {
-            "description": "fill with your link costum background image",
+            "description": "fill with your costum background image link",
             "required": false,
             "value": "https://telegra.ph/file/ec11307dd8a3496d8dcbf.jpg"
         },

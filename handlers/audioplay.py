@@ -1,3 +1,7 @@
+# This module i created only for playing music using audio file, idk, because the audio player on play.py module not working
+# So this is the alternative
+# Audio play function
+
 from os import path
 
 from pyrogram import Client
@@ -8,7 +12,7 @@ from callsmusic import callsmusic, queues
 import converter
 from downloaders import youtube
 
-from config import BOT_NAME as bn, DURATION_LIMIT, UPDATES_CHANNEL, AUD_IMG, QUE_IMG, OWNER_NAME
+from config import BOT_NAME as bn, DURATION_LIMIT, UPDATES_CHANNEL, AUD_IMG, QUE_IMG, GROUP_SUPPORT
 from helpers.filters import command, other_filters
 from helpers.decorators import errors
 from helpers.errors import DurationLimitError
@@ -19,7 +23,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 @errors
 async def stream(_, message: Message):
 
-    lel = await message.reply("☢ **ᴘʀᴏᴄᴇssɪɴɢ** sᴏᴜɴᴅ...")
+    lel = await message.reply("🔁 **Processing** sound...")
     sender_id = message.from_user.id
     sender_name = message.from_user.first_name
 
@@ -27,11 +31,11 @@ async def stream(_, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        text="📣 ᴄʜᴀɴɴᴇʟ",
-                        url=f"https://t.me/{UPDATES_CHANNEL}"),
+                        text="✨ ɢʀᴏᴜᴘ",
+                        url=f"https://t.me/{GROUP_SUPPORT}"),
                     InlineKeyboardButton(
-                        text="♞ ᴅᴇᴠ's",
-                        url=f"https://t.me/{OWNER_NAME}")
+                        text="🌻 ᴄʜᴀɴɴᴇʟ",
+                        url=f"https://t.me/{UPDATES_CHANNEL}")
                 ]
             ]
         )
@@ -42,7 +46,7 @@ async def stream(_, message: Message):
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             raise DurationLimitError(
-                f"✘ ᴠɪᴅᴇᴏs ʟᴏɴɢᴇʀ ᴛʜᴀɴ {DURATION_LIMIT} ᴍɪɴᴜᴛᴇ(s) ᴀʀᴇɴ'ᴛ ᴀʟʟᴏᴡᴇᴅ ᴛᴏ ᴘʟᴀʏ!"
+                f"❌ Videos longer than {DURATION_LIMIT} minute(s) aren't allowed to play!"
             )
 
         file_name = get_file_name(audio)
@@ -53,14 +57,14 @@ async def stream(_, message: Message):
     elif url:
         file_path = await converter.convert(youtube.download(url))
     else:
-        return await lel.edit_text("♨ ʏᴏᴜ ᴅɪᴅ ɴᴏᴛ ɢɪᴠᴇ ᴍᴇ ᴀᴜᴅɪᴏ ғɪʟᴇ ᴏʀ ʏᴛ ʟɪɴᴋ ᴛᴏ sᴛʀᴇᴀᴍ!")
+        return await lel.edit_text("❗ You did not give me audio file or yt link to stream!")
 
     if message.chat.id in callsmusic.pytgcalls.active_calls:
         position = await queues.put(message.chat.id, file=file_path)
         await message.reply_photo(
         photo=f"{QUE_IMG}",
         reply_markup=keyboard,
-        caption=f"#⌛ ʏᴏᴜʀ ʀᴇǫᴜᴇsᴛᴇᴅ sᴏɴɢ ᴡᴀs ᴀᴅᴅᴇᴅ ᴛᴏ **ǫᴜᴇᴜᴇ** ᴀᴛ ᴘᴏsɪᴛɪᴏɴ {position}!\n\n✈ ᴘᴏᴡᴇʀᴇᴅ ʙʏ {bn}")
+        caption=f"#⃣  Your requested song was added to **queue** at position {position} !\n\n⚡ __Powered by {bn} A.I__")
         return await lel.delete()
     else:
         callsmusic.pytgcalls.join_group_call(message.chat.id, file_path)
@@ -68,6 +72,6 @@ async def stream(_, message: Message):
         await message.reply_photo(
         photo=f"{AUD_IMG}",
         reply_markup=keyboard,
-        caption=f"🎧 **ɴᴏᴡ ᴘʟᴀʏɪɴɢ** ᴀ sᴏɴɢ ʀᴇǫᴜᴇsᴛᴇᴅ ʙʏ {costumer} !\n\n✈ ᴘᴏᴡᴇʀᴇᴅ ʙʏ {bn}"
-        )   
+        caption=f"💡 **Now playing** a song requested by {costumer} !\n\n⚡ Powered by {bn} A.I"
+        )
         return await lel.delete()

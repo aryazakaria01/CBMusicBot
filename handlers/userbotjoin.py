@@ -15,7 +15,7 @@ async def addchannel(client, message):
         invitelink = await client.export_chat_invite_link(chid)
     except:
         await message.reply_text(
-            "<b>make me as admin first !</b>",
+            "<b>Make me as admin first !</b>",
         )
         return
 
@@ -26,10 +26,10 @@ async def addchannel(client, message):
 
     try:
         await USER.join_chat(invitelink)
-        await USER.send_message(message.chat.id, "🤖: i'm joined here for playing music on voice chat")
+        await USER.send_message(message.chat.id, "🤖: I'm joined here for playing music on voice chat")
     except UserAlreadyParticipant:
         await message.reply_text(
-            "<b>helper already in your chat</b>",
+            "<b>Helper already in your chat</b>",
         )
     except Exception as e:
         print(e)
@@ -39,13 +39,13 @@ async def addchannel(client, message):
         )
         return
     await message.reply_text(
-        "<b>helper userbot joined your chat</b>",
+        "<b>Helper userbot joined your chat</b>",
     )
 
 
-@USER.on_message(filters.group & filters.command(["userbotleave"]))
+@Client.on_message(filters.group & filters.command(["userbotleave"]))
 @authorized_users_only
-async def rem(USER, message):
+async def rem(client, message):
     try:
         await USER.leave_chat(message.chat.id)
     except:

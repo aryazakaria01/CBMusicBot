@@ -24,6 +24,7 @@ from helpers.filters import command, other_filters
 from helpers.decorators import authorized_users_only
 from helpers.gets import get_file_name, get_url
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, Voice
+from converter.converter import convert
 from cache.admins import admins as a
 from PIL import Image, ImageFont, ImageDraw
 
@@ -120,20 +121,20 @@ async def playlist(client, message):
         temp.append(t)
     now_playing = temp[0][0]
     by = temp[0][1].mention(style="md")
-    msg = "**Lagu Yang Sedang dimainkan** di {}".format(message.chat.title)
+    msg = "**Now playing** on {}".format(message.chat.title)
     msg += "\n• "+ now_playing
-    msg += "\n• Atas permintaan "+by
+    msg += "\n• Requested By "+by
     temp.pop(0)
     if temp:
         msg += "\n\n"
-        msg += "**Antrian Lagu**"
+        msg += "**Queued Song**"
         for song in temp:
             name = song[0]
             usr = song[1].mention(style="md")
             msg += f"\n• {name}"
-            msg += f"\n• Atas permintaan {usr}\n"
+            msg += f"\n• Requested by {usr}\n"
     await message.reply_text(msg)
-
+                            
 # ============================= Settings =========================================
 def updated_stats(chat, queue, vol=100):
     if chat.id in callsmusic.pytgcalls.active_calls:
@@ -214,7 +215,7 @@ async def hfmm(_, message):
             return
         DISABLED_GROUPS.remove(message.chat.id)
         await lel.edit(
-            f"✅ **Music player has been activated in this chat.** {message.chat.id}"
+            f"✅ **Music player has been activated in this chat.**\n\n💬 {message.chat.id}"
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
@@ -225,7 +226,7 @@ async def hfmm(_, message):
             return
         DISABLED_GROUPS.append(message.chat.id)
         await lel.edit(
-            f"✅ **Music player has been deactivated in this chat.** {message.chat.id}"
+            f"✅ **Music player has been deactivated in this chat.**\n\n💬 {message.chat.id}"
         )
     else:
         await message.reply_text(
@@ -393,7 +394,7 @@ async def m_cb(b, cb):
             if callsmusic.queues.is_empty(chet_id):
                 callsmusic.pytgcalls.leave_group_call(chet_id)
 
-                await cb.message.edit("• No more playlist\n• Leaving voice chat")
+                await cb.message.edit("• No more playlist\n• leaving voice chat")
             else:
                 callsmusic.pytgcalls.change_stream(
                     chet_id, callsmusic.queues.get(chet_id)["file"]
@@ -447,7 +448,7 @@ async def play(_, message: Message):
                     invitelink = await _.export_chat_invite_link(chid)
                 except:
                     await lel.edit(
-                        "<b>make me as admin first.</b>",
+                        "<b>Make me as admin first.</b>",
                     )
                     return
                 try:
@@ -538,7 +539,7 @@ async def play(_, message: Message):
             # print(results)
             title = results[0]["title"][:25]
             thumbnail = results[0]["thumbnails"][0]
-            thumb_name = f"thumb-{title}-cybermusic.jpg"
+            thumb_name = f"thumb-{title}-veezmusic.jpg"
             thumb = requests.get(thumbnail, allow_redirects=True)
             open(thumb_name, "wb").write(thumb.content)
             duration = results[0]["duration"]
@@ -546,7 +547,7 @@ async def play(_, message: Message):
             views = results[0]["views"]
         except Exception as e:
             await lel.edit(
-                "**❌ Song not found.** please give a valid song name."
+                "😕 **Sorry, we couldn't find your requested song**\n• Check that the name is correct or try by searching in inline mode."
             )
             print(str(e))
             return
@@ -622,7 +623,7 @@ async def play(_, message: Message):
                 url = f"https://youtube.com{results[0]['url_suffix']}"
                 title = results[0]["title"][:25]
                 thumbnail = results[0]["thumbnails"][0]
-                thumb_name = f"thumb-{title}-veezmusic.jpg"
+                thumb_name = f"thumb-{title}-cybermusic.jpg"
                 thumb = requests.get(thumbnail, allow_redirects=True)
                 open(thumb_name, "wb").write(thumb.content)
                 duration = results[0]["duration"]
@@ -660,8 +661,8 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"💡 **Track added to the queue**\n\n🏷 **Name:** [{title[:35]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}\n" \
-                   +f"🔢 **At Position:** » `{position}` «",
+            caption=f"💡 **Track added to the queue**\n\n🏷 **Name:** [{title[:45]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}\n" \
+                   +f"\n🔢 **Track Position:** » `{position}` «",
             reply_markup=keyboard
         )
     else:
@@ -680,7 +681,7 @@ async def play(_, message: Message):
             return
         await message.reply_photo(
             photo="final.png",
-            caption=f"🏷 **Name:** [{title[:35]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n" \
+            caption=f"🏷 **Name:** [{title[:45]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n" \
                    +f"🎧 **Request by:** {message.from_user.mention}",
             reply_markup=keyboard
         )
@@ -701,7 +702,7 @@ async def lol_cb(b, cb):
         return
     useer_id = int(useer_id)
     if cb.from_user.id != useer_id:
-        await cb.answer("You are not people who requested this song!", show_alert=True)
+        await cb.answer("You are not people who requested this song !", show_alert=True)
         return
     #await cb.message.edit("🔁 **processing...**")
     x=int(x)
@@ -763,8 +764,8 @@ async def lol_cb(b, cb):
         await b.send_photo(
         chat_id,
         photo="final.png",
-        caption=f"💡 **Track added to the queue**\n\n🏷 **Name:** [{title[:35]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {r_by.mention}\n" \
-               +f"🔢 **At Position:** » `{position}` «",
+        caption=f"💡 **Track added to the queue**\n\n🏷 **Name:** [{title[:45]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {r_by.mention}\n" \
+               +f"\n🔢 **Track Position:** » `{position}` «",
         reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -784,8 +785,154 @@ async def lol_cb(b, cb):
         await b.send_photo(
         chat_id,
         photo="final.png",
-        caption=f"🏷 **Name:** [{title[:35]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n" \
+        caption=f"🏷 **Name:** [{title[:45]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n" \
                +f"🎧 **Request by:** {r_by.mention}",
         reply_markup=keyboard,
         )
         os.remove("final.png")
+
+
+@Client.on_message(filters.command("ytp") & filters.group & ~filters.edited)
+async def ytplay(_, message: Message):
+    global que
+    if message.chat.id in DISABLED_GROUPS:
+        return
+    lel = await message.reply("🔄 **Processing...**")
+    administrators = await get_administrators(message.chat)
+    chid = message.chat.id
+
+    try:
+        user = await USER.get_me()
+    except:
+        user.first_name = "Music assistant"
+    usar = user
+    wew = usar.id
+    try:
+        # chatdetails = await USER.get_chat(chid)
+        await _.get_chat_member(chid, wew)
+    except:
+        for administrator in administrators:
+            if administrator == message.from_user.id:
+                if message.chat.title.startswith("Channel Music: "):
+                    await lel.edit(
+                        f"<b>Please add {user.first_name} to your channel first</b>",
+                    )
+                    pass
+                try:
+                    invitelink = await _.export_chat_invite_link(chid)
+                except:
+                    await lel.edit(
+                        "<b>❗ Promote me as admin first for using me</b>",
+                    )
+                    return
+
+                try:
+                    await USER.join_chat(invitelink)
+                    await USER.send_message(
+                        message.chat.id, "🤖: I'm joined to this group for playing music in voice chat"
+                    )
+                    await lel.edit(
+                        "<b>💡 Helper userbot succesfully joined your chat</b>",
+                    )
+
+                except UserAlreadyParticipant:
+                    pass
+                except Exception:
+                    # print(e)
+                    await lel.edit(
+                        f"<b>Flood Wait Error\n{user.first_name} tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung untuk userbot! Pastikan pengguna tidak dibanned dalam grup."
+                        f"\n\nAtau tambahkan @{ASSISTANT_NAME} secara manual ke Grup Anda dan coba lagi</b>",
+                    )
+    try:
+        await USER.get_chat(chid)
+        # lmoa = await client.get_chat_member(chid,wew)
+    except:
+        await lel.edit(
+            f"<i>{user.first_name} was banned in this group, ask admin to unban @{ASSISTANT_NAME} manually.</i>"
+        )
+        return
+    await lel.edit("🔎 **Finding song...**")
+    user_id = message.from_user.id
+    user_name = message.from_user.first_name
+     
+
+    query = ""
+    for i in message.command[1:]:
+        query += " " + str(i)
+    print(query)
+    await lel.edit("🎵 **Connecting to vcg...**")
+    ydl_opts = {"format": "bestaudio[ext=m4a]"}
+    try:
+        results = YoutubeSearch(query, max_results=1).to_dict()
+        url = f"https://youtube.com{results[0]['url_suffix']}"
+        # print(results)
+        title = results[0]["title"][:25]
+        thumbnail = results[0]["thumbnails"][0]
+        thumb_name = f"thumb{title}.jpg"
+        thumb = requests.get(thumbnail, allow_redirects=True)
+        open(thumb_name, "wb").write(thumb.content)
+        duration = results[0]["duration"]
+        results[0]["url_suffix"]
+        views = results[0]["views"]
+
+    except Exception as e:
+        await lel.edit(
+            "**❗ Song not found,** please give a valid song name."
+        )
+        print(str(e))
+        return
+    dlurl=url
+    dlurl=dlurl.replace("youtube","youtubepp")
+    keyboard = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("🖱 ᴍᴇɴᴜ", callback_data="menu"),
+                InlineKeyboardButton("🗑 ᴄʟᴏsᴇ", callback_data="cls"),
+            ],[
+                InlineKeyboardButton("📣 ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}"),
+                InlineKeyboardButton("✨ ɢʀᴏᴜᴘ", url=f"https://t.me/{GROUP_SUPPORT}")
+            ],
+        ]
+    )
+    requested_by = message.from_user.first_name
+    await generate_cover(requested_by, title, views, duration, thumbnail)
+    file_path = await convert(youtube.download(url))
+    chat_id = get_chat_id(message.chat)
+    if chat_id in callsmusic.pytgcalls.active_calls:
+        position = await queues.put(chat_id, file=file_path)
+        qeue = que.get(chat_id)
+        s_name = title
+        r_by = message.from_user
+        loc = file_path
+        appendable = [s_name, r_by, loc]
+        qeue.append(appendable)
+        await message.reply_photo(
+            photo="final.png",
+            caption = f"🏷 **Name:** [{title[:25]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Queued position {position}`\n" \
+                    + f"🎧 **Request by:** {message.from_user.mention}",
+                   reply_markup=keyboard,
+        )
+        os.remove("final.png")
+        return await lel.delete()
+    else:
+        chat_id = get_chat_id(message.chat)
+        que[chat_id] = []
+        qeue = que.get(chat_id)
+        s_name = title
+        r_by = message.from_user
+        loc = file_path
+        appendable = [s_name, r_by, loc]
+        qeue.append(appendable)
+        try:
+            callsmusic.pytgcalls.join_group_call(chat_id, file_path)
+        except:
+            message.reply("**❗ Sorry, no active voice chat here, please turn on the voice chat first**")
+            return
+        await message.reply_photo(
+            photo="final.png",
+            caption = f"🏷 **Name:** [{title[:25]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n" \
+                    + f"🎧 **Request by:** {message.from_user.mention}",
+                   reply_markup=keyboard,)
+        os.remove("final.png")
+        return await lel.delete()
+

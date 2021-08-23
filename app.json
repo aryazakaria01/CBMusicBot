@@ -53,11 +53,11 @@
             "required": true
         },
         "SUDO_USERS": {
-            "description": "list id untuk daftar anggota sudo (pisahkan dengan spasi).",
+            "description": "fill with the user id who can access all function in your bot (separate with space).",
             "required": true
         },
         "DURATION_LIMIT": {
-            "description": "max durasi untuk video yang diunduh (dalam menit).",
+            "description": "max duration for video to download (in minutes).",
             "required": true,
             "value": "60"
         },
@@ -67,12 +67,12 @@
             "value": "ENABLE"
         },
         "UPDATES_CHANNEL": {
-            "description": "isi dengan username channel kamu, jika tidak punya lewati saja",
+            "description": "if you have channel fill the channel username here without @",
             "required": false,
             "value": "CyberMusicProject"
         },
         "GROUP_SUPPORT": {
-            "description": "isi dengan username grup kamu, jika tidak punya skip saja",
+            "description": "if you have group fill the group username here without @",
             "required": false,
             "value": "CyberSupportGroup"
         }

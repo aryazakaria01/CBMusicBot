@@ -15,8 +15,8 @@ from os import environ, execle, path, remove
 
 from callsmusic.callsmusic import client as pakaya
 from helpers.database import db
-from helpers.dbthings import main_broadcast_handler
-from handlers.musicdwn import humanbytes, get_text
+from helpers.dbtools import main_broadcast_handler
+from handlers.song import humanbytes, get_text
 from config import BOT_USERNAME, OWNER_NAME, SUDO_USERS, GROUP_SUPPORT
 
 

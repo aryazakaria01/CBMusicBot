@@ -23,7 +23,7 @@
 
 🧪 Get STRING_SESSION from here:
 
-[![GenerateString](https://img.shields.io/badge/repl.it-generateString-yellowgreen)](https://replit.com/@levinalab/StringSession#main.py)
+[![GenerateString](https://img.shields.io/badge/repl.it-generateString-yellowgreen)](https://replit.com/@Arya01/PyrogramMusicString#main.py)
 
 ## Features 🔮
 

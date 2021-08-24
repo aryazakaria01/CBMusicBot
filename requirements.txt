@@ -15,4 +15,6 @@ Pillow==8.3.1
 future
 psutil
 wget
-tswift
+motor
+dnspython
+bs4

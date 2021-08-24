@@ -10,7 +10,7 @@ f"""
 💭 as you know, cyber music is a telegram music bot project for streaming music on telegram voice chat group feature.\n
 💠 cyber music project was founded on April 12, 2020, we created a music bot project for streaming on telegram voice chat, which is now known as cyber music bot.\n
 🧪 cyber music version:
-❍ ver.6.0
+❍ ver.6.5
 ❍ beta-version \n
 👩🏻‍💻 developer:
 ❍ @{DEV_NAME}

@@ -13,7 +13,7 @@ from datetime import datetime
 from functools import wraps
 from os import environ, execle, path, remove
 
-from callsmusic import client as pakaya
+from callsmusic.callsmusic import client as pakaya
 from helpers.database import db
 from helpers.dbthings import main_broadcast_handler
 from handlers.musicdwn import humanbytes, get_text

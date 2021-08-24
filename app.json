@@ -38,6 +38,17 @@
             "description": "fill with costum thumbnail image it's different with bg_image",
             "required": false,
             "value": "https://telegra.ph/file/e9a4d6655e5ddf51f9160.jpg"
+        
+        },
+        "DATABASE_URL": {
+            "description": "fill with the mongodb url get from mongodb.com",
+            "required": true,
+            "value": ""
+        },
+        "LOG_CHANNEL": {
+            "description": "make a private channel and get the channel id, add your bot as admin to the channel too",
+            "required": true,
+            "value": ""
         },
         "OWNER_NAME": {
             "description": "fill with your username without @",

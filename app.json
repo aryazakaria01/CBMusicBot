@@ -16,8 +16,13 @@
         },
         "BOT_NAME": {
             "description": "your music bot name.",
-            "required": false,
+            "required": true,
             "value": ""
+        },
+        "OWNER_ID": {
+            "description": "fill with your telegram id as the owner of the bot",
+            "required": true,
+            "value": ""        
         },
         "BOT_USERNAME": {
             "description": "fill with your bot username without @",

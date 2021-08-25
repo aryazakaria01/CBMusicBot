@@ -81,7 +81,7 @@ The easy way to host this bot, deploy to Heroku
 ## Railway Deployment 🚄
 For deployment on railway you can see the full of [Necessary Variables Here](https://github.com/aryazakaria01/CBMusicBot/blob/main/example.env), make sure you fill all of it.
 
-[![Deploy+on+Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/aryazakaria01/CBMusicBot&envs=SESSION_NAME,BOT_TOKEN,BOT_USERNAME,BOT_NAME,GROUP_SUPPORT,ASSISTANT_NAME,OWNER_NAME,BG_IMAGE,UPDATES_CHANNEL,API_ID,API_HASH,PMPERMIT,SUDO_USERS,DURATION_LIMIT,THUMB_IMG)
+[![Deploy+on+Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/aryazakaria01/CBMusicBot&envs=SESSION_NAME,BOT_TOKEN,BOT_USERNAME,BOT_NAME,GROUP_SUPPORT,ASSISTANT_NAME,OWNER_NAME,OWNER_ID,DATABASE_URL,LOG_CHANNEL,BG_IMAGE,UPDATES_CHANNEL,API_ID,API_HASH,PMPERMIT,SUDO_USERS,DURATION_LIMIT,THUMB_IMG)
 
 ### Credits 💖
 - [Arya Zakaria](https://github.com/aryazakaria01): Dev

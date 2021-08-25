@@ -25,8 +25,9 @@ OWNER_NAME = getenv("OWNER_NAME", "Badboyanim") # isi dengan username kamu tanpa
 DEV_NAME = getenv("DEV_NAME", "Badboyanim")
 PMPERMIT = getenv("PMPERMIT", None)
 
+OWNER_ID = int(os.environ.get("OWNER_ID")) # fill with your id as the owner of the bot
 DATABASE_URL = os.environ.get("DATABASE_URL") # fill with your mongodb url
-LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL")) # make a private channel and get the id
+LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL")) # make a private channel and get the channel id
 BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", False)) # just fill with True or False (optional)
 DURATION_LIMIT = int(getenv("DURATION_LIMIT", "250"))
 

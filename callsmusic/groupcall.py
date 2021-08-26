@@ -1,6 +1,6 @@
 from typing import Dict
 
-from pytgcalls import GroupCall
+from pytgcalls import group_call
 
 from . import queues
 from . import client

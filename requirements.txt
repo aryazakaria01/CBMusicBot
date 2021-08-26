@@ -1,6 +1,6 @@
 pyrogram
 tgcrypto
-py-tgcalls==0.7.2
+py-tgcalls==0.7.0
 python-dotenv
 youtube_dl==2021.06.06
 youtube_search_python==1.4.6

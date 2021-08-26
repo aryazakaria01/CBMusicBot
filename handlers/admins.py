@@ -1,4 +1,4 @@
-# Copyright (C) 2021 CyberMusicProject
+# Copyright (C) 2021 VeezMusicProject
 
 import traceback
 import asyncio
@@ -264,7 +264,7 @@ async def cbresume(_, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex("cbend"))
 async def cbend(_, query: CallbackQuery):
-    if query.message.chat.id not in groupcall.active_chats:
+    if query.message.chat.id not in callsmusic.active_chats:
         await query.edit_message_text("❗️ Nothing is playing", reply_markup=BACK_BUTTON)
     else:
         try:
@@ -313,4 +313,4 @@ async def cbunmute(_, query: CallbackQuery):
     elif result == 2:
         await query.edit_message_text("❗️ Not connected to voice chat", reply_markup=BACK_BUTTON)
 
-# (C) supun-maduraga for his project on call-music-plus 
+# (C) supun-maduraga for his project on call-music-plus

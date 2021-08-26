@@ -13,7 +13,6 @@ from helpers.channelmusic import get_chat_id
 from helpers.decorators import authorized_users_only, errors
 from helpers.filters import command, other_filters
 from callsmusic import callsmusic
-from callsmusic import groupcall
 from callsmusic.queues import queues
 from config import LOG_CHANNEL, OWNER_ID, BOT_USERNAME
 from helpers.database import db, dcmdb, Database
@@ -223,7 +222,7 @@ async def delcmdc(_, message: Message):
 @errors
 @authorized_users_only
 async def silent(_, message: Message):
-    result = groupcall.mute(message.chat.id)
+    result = callsmusic.mute(message.chat.id)
 
     if result == 0:
         await message.reply_text("🔇 Assistant muted")
@@ -237,7 +236,7 @@ async def silent(_, message: Message):
 @errors
 @authorized_users_only
 async def unsilent(_, message: Message):
-    result = groupcall.unmute(message.chat.id)
+    result = callsmusic.unmute(message.chat.id)
 
     if result == 0:
         await message.reply_text("🔊 Assistant unmuted")
@@ -251,14 +250,14 @@ async def unsilent(_, message: Message):
 
 @Client.on_callback_query(filters.regex("cbpause"))
 async def cbpause(_, query: CallbackQuery):
-    if groupcall.pause(query.message.chat.id):
+    if callsmusic.pause(query.message.chat.id):
         await query.edit_message_text("⏸ Music paused", reply_markup=BACK_BUTTON)
     else:
         await query.edit_message_text("❗️ Nothing is playing", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbresume"))
 async def cbresume(_, query: CallbackQuery):
-    if groupcall.resume(query.message.chat.id):
+    if callsmusic.resume(query.message.chat.id):
         await query.edit_message_text("▶ Music resumed", reply_markup=BACK_BUTTON)
     else:
         await query.edit_message_text("❗️ Nothing is paused", reply_markup=BACK_BUTTON)
@@ -273,20 +272,20 @@ async def cbend(_, query: CallbackQuery):
         except QueueEmpty:
             pass
 
-        await groupcall.stop(query.message.chat.id)
+        await callsmusic.stop(query.message.chat.id)
         await query.edit_message_text("✅ Cleared the queue and left the voice chat!", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbskip"))
 async def cbskip(_, query: CallbackQuery):
-     if query.message.chat.id not in groupcall.active_chats:
+     if query.message.chat.id not in callsmusic.active_chats:
         await query.edit_message_text("❗️ Nothing is playing", reply_markup=BACK_BUTTON)
      else:
         queues.task_done(query.message.chat.id)
         
         if queues.is_empty(query.message.chat.id):
-            await groupcall.stop(query.message.chat.id)
+            await callsmusic.stop(query.message.chat.id)
         else:
-            await groupcall.set_stream(
+            await callsmusic.set_stream(
                 query.message.chat.id, queues.get(query.message.chat.id)["file"]
             )
 
@@ -294,7 +293,7 @@ async def cbskip(_, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex("cbmute"))
 async def cbmute(_, query: CallbackQuery):
-    result = groupcall.mute(query.message.chat.id)
+    result = callsmusic.mute(query.message.chat.id)
 
     if result == 0:
         await query.edit_message_text("🔇 Assistant muted", reply_markup=BACK_BUTTON)
@@ -305,7 +304,7 @@ async def cbmute(_, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex("cbunmute"))
 async def cbunmute(_, query: CallbackQuery):
-    result = groupcall.unmute(query.message.chat.id)
+    result = callsmusic.unmute(query.message.chat.id)
 
     if result == 0:
         await query.edit_message_text("🔊 Assistant unmuted", reply_markup=BACK_BUTTON)

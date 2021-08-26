@@ -43,7 +43,11 @@
             "description": "fill with costum thumbnail image it's different with bg_image",
             "required": false,
             "value": "https://telegra.ph/file/e9a4d6655e5ddf51f9160.jpg"
-        
+        },
+        "BROADCAST_AS_COPY": {
+            "description": "choose one between False and True, if you don't know what this is, ask to @CyberSupportGroup on telegram",
+            "required": false,
+            "value": "False"            
         },
         "DATABASE_URL": {
             "description": "fill with the mongodb url get from mongodb.com",

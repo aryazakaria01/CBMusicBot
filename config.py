@@ -22,7 +22,6 @@ ASSISTANT_NAME = getenv("ASSISTANT_NAME", "SaitamaHelper")
 GROUP_SUPPORT = getenv("GROUP_SUPPORT", "CyberSupportGroup")
 UPDATES_CHANNEL = getenv("UPDATES_CHANNEL", "CyberMusicProject")
 OWNER_NAME = getenv("OWNER_NAME", "Badboyanim") # isi dengan username kamu tanpa simbol @
-DEV_NAME = getenv("DEV_NAME", "Badboyanim")
 PMPERMIT = getenv("PMPERMIT", None)
 
 OWNER_ID = int(os.environ.get("OWNER_ID")) # fill with your id as the owner of the bot

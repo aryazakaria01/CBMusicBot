@@ -17,7 +17,7 @@ async def pmPermit(client: USER, message: Message):
                 return
             await USER.send_message(
                 message.chat.id,
-            f"✨ Hello, i'm a official **music assistant of {BOT_NAME}.**\n\n❗️ **notes:**\n\n⫸ don't spam message.\n⫸ don't send me anything confidential\n\n⨀ Join to @{UPDATES_CHANNEL} \n⨀ Join to @{GROUP_SUPPORT}\n\n👩🏻‍💻 Dev: @{OWNER_NAME}\n\n👩🏻‍🔧 If you want me join to your group, send here your group link, I will joined as soon as possible.\n\n",
+            f"✨ Hello, i'm a official **music assistant of {BOT_NAME}.**\n\n❗️ **Notes:**\n\n⫸ Don't spam message.\n⫸ Don't send me anything confidential\n\n⨀ Join to @{UPDATES_CHANNEL} \n⨀ Join to @{GROUP_SUPPORT}\n\n👩🏻‍💻 Dev: @{OWNER_NAME}\n\n👩🏻‍🔧 If you want me join to your group, send here your group link, I will joined as soon as possible.\n\n",
             )
             return
 
@@ -65,4 +65,3 @@ async def rmpmPermiat(client: USER, message: Message):
         await message.reply_text("❌ Disapproved to pm.")
         return
     message.continue_propagation()
-    

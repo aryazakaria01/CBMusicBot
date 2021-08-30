@@ -302,7 +302,7 @@ async def m_cb(b, cb):
         if (
             chet_id not in callsmusic.pytgcalls.active_calls
             ) or (
-                callsmusic.pytgcalls.active_calls[chet_id] == "playing"
+                callsmusic.pytgcalls.active_calls[chet_id] == "Playing"
             ):
                 await cb.answer("Assistant is not connected to voice chat!", show_alert=True)
         else:
@@ -357,12 +357,12 @@ async def m_cb(b, cb):
             await cb.answer("Music paused!")
 
     elif type_ == "cls":          
-        await cb.answer("Closed menu")
+        await cb.answer("closed menu")
         await cb.message.delete()       
 
     elif type_ == "menu":  
         stats = updated_stats(cb.message.chat, qeue)  
-        await cb.answer("Menu opened")
+        await cb.answer("menu opened")
         marr = InlineKeyboardMarkup(
             [
                 [
@@ -518,7 +518,7 @@ async def play(_, message: Message):
         )
         file_name = get_file_name(audio)
         title = file_name
-        thumb_name = "https://telegra.ph/file/fa2cdb8a14a26950da711.png"
+        thumb_name = "https://telegra.ph/file/4b35d98fbdf2cd4f14d00.jpg"
         thumbnail = thumb_name
         duration = round(audio.duration / 60)
         views = "Locally added"
@@ -579,14 +579,14 @@ async def play(_, message: Message):
           await lel.edit("**Please give a song name you want to play !**")
         # veez project
         try:
-            toxxt = "⚡ __Choose a song to play:__\n\n"
+            toxxt = "⚡ __choose a song to play:__\n\n"
             j = 0
             useer=user_name
             emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣"]
             while j < 6:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:30]}](https://youtube.com{results[j]['url_suffix']})\n"
                 toxxt += f" ├ 💡 **Duration** - {results[j]['duration']}\n"
-                toxxt += f" └ ⚡ Powered by {BOT_NAME} A.I\n\n"
+                toxxt += f" └ ⚡ __Powered by {BOT_NAME} A.I__\n\n"
                 j += 1            
             keyboard = InlineKeyboardMarkup(
                 [
@@ -728,7 +728,7 @@ async def lol_cb(b, cb):
     except:
         pass
     try:
-        thumb_name = f"thumb-{title}cybermusic.jpg"
+        thumb_name = f"thumb-{title}veezmusic.jpg"
         thumb = requests.get(thumbnail, allow_redirects=True)
         open(thumb_name, "wb").write(thumb.content)
     except Exception as e:
@@ -804,7 +804,7 @@ async def ytplay(_, message: Message):
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "Music assistant"
+        user.first_name = "music assistant"
     usar = user
     wew = usar.id
     try:
@@ -935,4 +935,3 @@ async def ytplay(_, message: Message):
                    reply_markup=keyboard,)
         os.remove("final.png")
         return await lel.delete()
-

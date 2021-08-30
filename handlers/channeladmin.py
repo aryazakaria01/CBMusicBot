@@ -20,16 +20,16 @@ async def pause(_, message: Message):
       conid = conchat.linked_chat.id
       chid = conid
     except:
-      await message.reply("ɪs ʏᴏᴜʀ ᴄʜᴀᴛ ᴀʟʀᴇᴀᴅʏ ᴄᴏɴɴᴇᴄᴛᴇᴅ ?")
+      await message.reply("Is your chat already connected ?")
       return    
     chat_id = chid
     if (chat_id not in callsmusic.pytgcalls.active_calls) or (
         callsmusic.pytgcalls.active_calls[chat_id] == "paused"
     ):
-        await message.reply_text("✘ ɴᴏᴛʜɪɴɢ ɪs ᴘʟᴀʏɪɴɢ !")
+        await message.reply_text("❗ Nothing is playing !")
     else:
         callsmusic.pytgcalls.pause_stream(chat_id)
-        await message.reply_text("➤ ᴍᴜsɪᴄ ᴘᴀᴜsᴇᴅ!")
+        await message.reply_text("▶️ Music paused!")
 
 
 @Client.on_message(filters.command(["channelresume","cresume"]) & filters.group & ~filters.edited)
@@ -41,16 +41,16 @@ async def resume(_, message: Message):
       conid = conchat.linked_chat.id
       chid = conid
     except:
-      await message.reply("ɪs ʏᴏᴜʀ ᴄʜᴀᴛ ᴀʟʀᴇᴀᴅʏ ᴄᴏɴɴᴇᴄᴛᴇᴅ ?")
+      await message.reply("Is your chat already connected ?")
       return    
     chat_id = chid
     if (chat_id not in callsmusic.pytgcalls.active_calls) or (
         callsmusic.pytgcalls.active_calls[chat_id] == "playing"
     ):
-        await message.reply_text("✘ ɴᴏᴛʜɪɴɢ ɪs ᴘᴀᴜsᴇᴅ!")
+        await message.reply_text("❗ Nothing is paused!")
     else:
         callsmusic.pytgcalls.resume_stream(chat_id)
-        await message.reply_text("✈ ᴍᴜsɪᴄ ʀᴇsᴜᴍᴇᴅ!")
+        await message.reply_text("⏸ Music resumed!")
 
 
 @Client.on_message(filters.command(["channelend","cend"]) & filters.group & ~filters.edited)
@@ -62,11 +62,11 @@ async def stop(_, message: Message):
       conid = conchat.linked_chat.id
       chid = conid
     except:
-      await message.reply("ɪs ʏᴏᴜʀ ᴄʜᴀᴛ ᴀʟʀᴇᴀᴅʏ ᴄᴏɴɴᴇᴄᴛᴇᴅ ?")
+      await message.reply("Is your chat already connected ?")
       return    
     chat_id = chid
     if chat_id not in callsmusic.pytgcalls.active_calls:
-        await message.reply_text("✘ ɴᴏᴛʜɪɴɢ ɪɴ sᴛʀᴇᴀᴍɪɴɢ!")
+        await message.reply_text("❗ Nothing in streaming!")
     else:
         try:
             callsmusic.queues.clear(chat_id)
@@ -74,7 +74,7 @@ async def stop(_, message: Message):
             pass
 
         callsmusic.pytgcalls.leave_group_call(chat_id)
-        await message.reply_text("♨ sᴛʀᴇᴀᴍɪɴɢ ᴇɴᴅᴇᴅ!")
+        await message.reply_text("⏹ Streaming ended!")
 
 
 @Client.on_message(filters.command(["channelskip","cskip"]) & filters.group & ~filters.edited)
@@ -87,11 +87,11 @@ async def skip(_, message: Message):
       conid = conchat.linked_chat.id
       chid = conid
     except:
-      await message.reply("ɪs ᴛʜᴇ ᴄʜᴀᴛ ᴀʟʀᴇᴀᴅʏ ᴄᴏɴɴᴇᴄᴛᴇᴅ ?")
+      await message.reply("Is the chat already connected ?")
       return    
     chat_id = chid
     if chat_id not in callsmusic.pytgcalls.active_calls:
-        await message.reply_text("♨ ɴᴏᴛʜɪɴɢ ᴛᴏ sᴋɪᴘ!")
+        await message.reply_text("❗ Nothing to skip!")
     else:
         callsmusic.queues.task_done(chat_id)
 
@@ -107,7 +107,7 @@ async def skip(_, message: Message):
         skip = qeue.pop(0)
     if not qeue:
         return
-    await message.reply_text(f"- sᴋɪᴘᴘᴇᴅ **{skip[0]}**\n- ɴᴏᴡ ᴘʟᴀʏɪɴɢ **{qeue[0][0]}**")
+    await message.reply_text(f"- Skipped **{skip[0]}**\n- Now playing **{qeue[0][0]}**")
 
 
 @Client.on_message(filters.command("admincache"))
@@ -118,7 +118,7 @@ async def admincache(client, message: Message):
       conid = conchat.linked_chat.id
       chid = conid
     except:
-      await message.reply("ɪs ᴛʜᴇ ᴄʜᴀᴛ ᴀʟʀᴇᴀᴅʏ ᴄᴏɴɴᴇᴄᴛᴇᴅ ?")
+      await message.reply("Is the chat already connected ?")
       return
     set(
         chid,
@@ -127,4 +127,4 @@ async def admincache(client, message: Message):
             for member in await conchat.linked_chat.get_members(filter="administrators")
         ],
     )
-    await message.reply_text("✔ ᴀᴅᴍɪɴ ᴄᴀᴄʜᴇ ʀᴇғʀᴇsʜᴇᴅ!")
+    await message.reply_text("✅ Admin cache refreshed!")

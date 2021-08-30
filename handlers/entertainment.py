@@ -14,7 +14,7 @@ async def asupan(client, message):
         results = f"{resp['url']}"
         return await client.send_video(message.chat.id, video=results)
     except Exception:
-        await message.reply_text("`sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ ʟᴏʟ...`")
+        await message.reply_text("`Something went wrong LOL...`")
 
 
 @Client.on_message(command(["wibu", f"wibu@{BOT_USERNAME}"]))
@@ -24,7 +24,7 @@ async def wibu(client, message):
         results = f"{resp['url']}"
         return await client.send_video(message.chat.id, video=results)
     except Exception:
-        await message.reply_text("`sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ ʟᴏʟ...`")
+        await message.reply_text("`Something went wrong LOL...`")
 
 
 @Client.on_message(command(["chika", f"chika@{BOT_USERNAME}"]))
@@ -34,7 +34,7 @@ async def chika(client, message):
         results = f"{resp['url']}"
         return await client.send_video(message.chat.id, video=results)
     except Exception:
-        await message.reply_text("`sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ ʟᴏʟ...`")
+        await message.reply_text("`Something went wrong LOL...`")
 
 
 @Client.on_message(command(["truth", f"truth@{BOT_USERNAME}"]))
@@ -44,7 +44,7 @@ async def truth(client, message):
         results = f"{resp['message']}"
         return await message.reply_text(results)
     except Exception:
-        await message.reply_text("sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ...")
+        await message.reply_text("something went wrong...")
 
 
 @Client.on_message(command(["dare", f"dare@{BOT_USERNAME}"]))
@@ -54,19 +54,19 @@ async def dare(client, message):
         results = f"{resp['message']}"
         return await message.reply_text(results)
     except Exception:
-        await message.reply_text("sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ...")
+        await message.reply_text("something went wrong...")
 
 
 @Client.on_message(command(["lyric", f"lyric@{BOT_USERNAME}"]))
 async def lirik(_, message):
     try:
         if len(message.command) < 2:
-            await message.reply_text("**ɢɪᴠᴇ ᴀ ʟʏʀɪᴄ ɴᴀᴍᴇ ᴛᴏᴏ !**")
+            await message.reply_text("**give a lyric name too !**")
             return
         query = message.text.split(None, 1)[1]
-        rep = await message.reply_text("✈ **sᴇᴀʀᴄʜɪɴɢ ʟʏʀɪᴄs...**")
+        rep = await message.reply_text("🔎 **searching lyrics...**")
         resp = requests.get(f"https://api-tede.herokuapp.com/api/lirik?l={query}").json()
         result = f"{resp['data']}"
         await rep.edit(result)
     except Exception:
-        await rep.edit("**ʟʏʀɪᴄs ɴᴏᴛ ғᴏᴜɴᴅ.** ᴘʟᴇᴀsᴇ ɢɪᴠᴇ ᴀ ᴠᴀʟɪᴅ sᴏɴɢ ɴᴀᴍᴇ !")
+        await rep.edit("**Lyrics not found.** please give a valid song name !")

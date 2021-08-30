@@ -16,12 +16,14 @@ from os import environ, execle, path, remove
 from callsmusic.callsmusic import client as pakaya
 from helpers.database import db
 from helpers.dbtools import main_broadcast_handler
+from helpers.decorators import sudo_users_only
 from handlers.song import humanbytes, get_text
 from config import BOT_USERNAME, OWNER_ID, SUDO_USERS, GROUP_SUPPORT
 
 
 # Stats Of Your Bot
-@Client.on_message(filters.command("stats") & filters.user(SUDO_USERS))
+@Client.on_message(filters.command("stats"))
+@sudo_users_only
 async def botstats(_, message: Message):
     total, used, free = shutil.disk_usage(".")
     total = humanbytes(total)
@@ -32,7 +34,7 @@ async def botstats(_, message: Message):
     disk_usage = psutil.disk_usage('/').percent
     total_users = await db.total_users_count()
     await message.reply_text(
-        text=f"**📊 Stats Of @{BOT_USERNAME}** \n\n**🤖 Bot version:** `v6.5` \n\n**🙎🏼 Users:** \n » **Users on pm:** `{total_users}` \n\n**💾 Disk usage,** \n » **disk space:** `{total}` \n » **used:** `{used}({disk_usage}%)` \n » **free:** `{free}` \n\n**🎛 Hardware usage,** \n » **CPU usage:** `{cpu_usage}%` \n » **RAM usage:** `{ram_usage}%`",
+        text=f"**📊 Stats Of @{BOT_USERNAME}** \n\n**🤖 Bot Version:** `v6.5` \n\n**🙎🏼 Users:** \n » **Users on pm:** `{total_users}` \n\n**💾 Disk usage,** \n » **Disk space:** `{total}` \n » **Used:** `{used}({disk_usage}%)` \n » **Free:** `{free}` \n\n**🎛 Hardware usage,** \n » **CPU usage:** `{cpu_usage}%` \n » **RAM usage:** `{ram_usage}%`",
         parse_mode="Markdown",
         quote=True
     )
@@ -61,7 +63,7 @@ async def ban(c: Client, m: Message):
         try:
             await c.send_message(
                 user_id,
-                f"Sorry, you're banned!** \n\nReason: `{ban_reason}` \nDuration: `{ban_duration}` day(s). \n\n**💬 message from owner: ask in @{GROUP_SUPPORT} if you think this was an mistake."
+                f"Sorry, you're banned!** \n\nReason: `{ban_reason}` \nDuration: `{ban_duration}` day(s). \n\n**💬 Message from owner: ask in @{GROUP_SUPPORT} if you think this was an mistake."
             )
             ban_log_text += '\n\n✅ This notification was sent to that user'
         except:
@@ -128,7 +130,7 @@ async def _banned_usrs(_, m: Message):
         banned_on = banned_user['ban_status']['banned_on']
         ban_reason = banned_user['ban_status']['ban_reason']
         banned_usr_count += 1
-        text += f"⫸ *Uuser id**: `{user_id}`\n⫸ **Ban duration**: `{ban_duration}`\n⫸ **Banned date**: `{banned_on}`\n⫸ **Ban reason**: `{ban_reason}`\n\n"
+        text += f"⫸ **User id**: `{user_id}`\n⫸ **Ban duration**: `{ban_duration}`\n⫸ **Banned date**: `{banned_on}`\n⫸ **Ban reason**: `{ban_reason}`\n\n"
     reply_text = f"⫸ **Total banned:** `{banned_usr_count}`\n\n{text}"
     if len(reply_text) > 4096:
         with open('banned-user-list.txt', 'w') as f:

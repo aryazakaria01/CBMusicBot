@@ -32,7 +32,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    m = message.reply("🔎 finding song...")
+    m = message.reply("🔎 Finding song...")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -257,7 +257,7 @@ async def ytmusic(client, message: Message):
     urlissed = get_text(message)
 
     pablo = await client.send_message(
-        message.chat.id, f"💡 Getting {urlissed} from youtube server, please wait..."
+        message.chat.id, f"💡 __Getting {urlissed} from youtube server, please wait...__"
     )
     if not urlissed:
         await pablo.edit("Invalid command syntax, please check help menu to know more!")

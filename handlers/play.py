@@ -302,7 +302,7 @@ async def m_cb(b, cb):
         if (
             chet_id not in callsmusic.pytgcalls.active_calls
             ) or (
-                callsmusic.pytgcalls.active_calls[chet_id] == "Playing"
+                callsmusic.pytgcalls.active_calls[chet_id] == "playing"
             ):
                 await cb.answer("Assistant is not connected to voice chat!", show_alert=True)
         else:
@@ -339,7 +339,7 @@ async def m_cb(b, cb):
             ) or (
                 callsmusic.pytgcalls.active_calls[chet_id] == "playing"
             ):
-                await cb.answer("Voice chat is not connected or already playing", show_alert=True)
+                await cb.answer("vVice chat is not connected or already playing", show_alert=True)
         else:
             callsmusic.pytgcalls.resume_stream(chet_id)
             await cb.answer("Music resumed!")
@@ -357,12 +357,12 @@ async def m_cb(b, cb):
             await cb.answer("Music paused!")
 
     elif type_ == "cls":          
-        await cb.answer("closed menu")
+        await cb.answer("Closed menu")
         await cb.message.delete()       
 
     elif type_ == "menu":  
         stats = updated_stats(cb.message.chat, qeue)  
-        await cb.answer("menu opened")
+        await cb.answer("Menu opened")
         marr = InlineKeyboardMarkup(
             [
                 [
@@ -387,7 +387,7 @@ async def m_cb(b, cb):
         if qeue:
             qeue.pop(0)
         if chet_id not in callsmusic.pytgcalls.active_calls:
-            await cb.answer("Assistant is not connected to voice chat!", show_alert=True)
+            await cb.answer("assistant is not connected to voice chat!", show_alert=True)
         else:
             callsmusic.queues.task_done(chet_id)
 
@@ -518,7 +518,7 @@ async def play(_, message: Message):
         )
         file_name = get_file_name(audio)
         title = file_name
-        thumb_name = "https://telegra.ph/file/4b35d98fbdf2cd4f14d00.jpg"
+        thumb_name = "https://telegra.ph/file/fa2cdb8a14a26950da711.png"
         thumbnail = thumb_name
         duration = round(audio.duration / 60)
         views = "Locally added"
@@ -539,7 +539,7 @@ async def play(_, message: Message):
             # print(results)
             title = results[0]["title"][:25]
             thumbnail = results[0]["thumbnails"][0]
-            thumb_name = f"thumb-{title}-veezmusic.jpg"
+            thumb_name = f"thumb-{title}-cybermusic.jpg"
             thumb = requests.get(thumbnail, allow_redirects=True)
             open(thumb_name, "wb").write(thumb.content)
             duration = results[0]["duration"]
@@ -579,7 +579,7 @@ async def play(_, message: Message):
           await lel.edit("**Please give a song name you want to play !**")
         # veez project
         try:
-            toxxt = "⚡ __choose a song to play:__\n\n"
+            toxxt = "⚡ __Choose a song to play:__\n\n"
             j = 0
             useer=user_name
             emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣"]
@@ -704,7 +704,7 @@ async def lol_cb(b, cb):
     if cb.from_user.id != useer_id:
         await cb.answer("You are not people who requested this song !", show_alert=True)
         return
-    #await cb.message.edit("🔁 **processing...**")
+    #await cb.message.edit("🔁 **Processing...**")
     x=int(x)
     try:
         useer_name = cb.message.reply_to_message.from_user.first_name
@@ -728,7 +728,7 @@ async def lol_cb(b, cb):
     except:
         pass
     try:
-        thumb_name = f"thumb-{title}veezmusic.jpg"
+        thumb_name = f"thumb-{title}cybermusic.jpg"
         thumb = requests.get(thumbnail, allow_redirects=True)
         open(thumb_name, "wb").write(thumb.content)
     except Exception as e:
@@ -768,7 +768,8 @@ async def lol_cb(b, cb):
                +f"\n🔢 **Track Position:** » `{position}` «",
         reply_markup=keyboard,
         )
-        os.remove("final.png")
+        if path.exists("final.png"):
+            os.remove("final.png")
     else:
         que[chat_id] = []
         qeue = que.get(chat_id)
@@ -789,10 +790,11 @@ async def lol_cb(b, cb):
                +f"🎧 **Request by:** {r_by.mention}",
         reply_markup=keyboard,
         )
-        os.remove("final.png")
+        if path.exists("final.png"):
+            os.remove("final.png")
 
 
-@Client.on_message(filters.command("ytp") & filters.group & ~filters.edited)
+@Client.on_message(command("ytp") & other_filters)
 async def ytplay(_, message: Message):
     global que
     if message.chat.id in DISABLED_GROUPS:
@@ -804,7 +806,7 @@ async def ytplay(_, message: Message):
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "music assistant"
+        user.first_name = "Music assistant"
     usar = user
     wew = usar.id
     try:

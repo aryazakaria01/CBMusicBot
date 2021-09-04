@@ -83,7 +83,7 @@ async def addcchannel(client, message):
       conid = conchat.linked_chat.id
       chid = conid
     except:
-      await message.reply("is the chat even linked ?")
+      await message.reply("Is the chat even linked ?")
       return    
     chat_id = chid
     try:
@@ -101,7 +101,7 @@ async def addcchannel(client, message):
 
     try:
         await USER.join_chat(invitelink)
-        await USER.send_message(message.chat.id, "🤖: I joined here as you requested")
+        await USER.send_message(message.chat.id, "🤖: i joined here as you requested")
     except UserAlreadyParticipant:
         await message.reply_text(
             "<b>Helper already in your channel</b>",

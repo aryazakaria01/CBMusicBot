@@ -1,6 +1,6 @@
-# this module i created only for playing music using audio file, idk, because the audio player on play.py module not working
-# so this is the alternative
-# audio play function
+# This module i created only for playing music using audio file, idk, because the audio player on play.py module not working
+# So this is the alternative
+# Audio play function
 
 from os import path
 
@@ -61,10 +61,11 @@ async def stream(_, message: Message):
 
     if message.chat.id in callsmusic.pytgcalls.active_calls:
         position = await queues.put(message.chat.id, file=file_path)
+        costumer = message.from_user.mention
         await message.reply_photo(
         photo=f"{QUE_IMG}",
         reply_markup=keyboard,
-        caption=f"#⃣  Your requested song was added to **queue** at position {position} !\n\n⚡ Powered by {bn} A.I")
+        caption=f"💡 Track added to the **queue**\n\n🔢 position: » `{position}` «\n🎧 request by: {costumer}\n\n⚡ __Powered by {bn} A.I__")
         return await lel.delete()
     else:
         callsmusic.pytgcalls.join_group_call(message.chat.id, file_path)
@@ -72,6 +73,6 @@ async def stream(_, message: Message):
         await message.reply_photo(
         photo=f"{AUD_IMG}",
         reply_markup=keyboard,
-        caption=f"💡 **Now playing** a song requested by {costumer} !\n\n⚡ Powered by {bn} A.I"
+        caption=f"💡 **Status**: `Playing`\n🎧 Request by: {costumer}\n\n⚡ __Powered by {bn} A.I__"
         )
         return await lel.delete()

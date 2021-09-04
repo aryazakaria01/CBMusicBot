@@ -1,4 +1,4 @@
-# Copyright (C) 2021 CyberMusicProject
+# Copyright (C) 2021 CBMusicProject
 
 import traceback
 import asyncio
@@ -368,7 +368,7 @@ async def temp_ban_user(_, message):
             await message.reply_text(
                 "✅ Temporarily banned "
                 f"{user_first_name}"
-                f" ,banned for {message.command[1]}!"
+                f" ,Banned for {message.command[1]}!"
             )
         else:
             await message.reply_text(
@@ -376,7 +376,7 @@ async def temp_ban_user(_, message):
                 f"<a href='tg://user?id={user_id}'>"
                 "From this group !"
                 "</a>"
-                f" ,banned for {message.command[1]}!"
+                f" ,Banned for {message.command[1]}!"
             )
 
 @Client.on_message(filters.command(["ub", "um"], COMMAND_PREFIXES))
@@ -441,7 +441,7 @@ async def mute_user(_, message):
             await message.reply_text(
                 "🏻✅ Okay, "
                 f"<a href='tg://user?id={user_id}'>"
-                "now is"
+                "Now is"
                 "</a>"
                 " Muted !"
             )
@@ -494,6 +494,6 @@ async def temp_mute_user(_, message):
                 f"<a href='tg://user?id={user_id}'>"
                 "is"
                 "</a>"
-                " now "
+                " Now "
                 f" Muted, for {message.command[1]}!"
             )

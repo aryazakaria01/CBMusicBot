@@ -1,4 +1,4 @@
-# Copyright (C) 2021 CyberMusic Project
+# Copyright (C) 2021 CBMusicProject
 
 import json
 import os
@@ -237,7 +237,7 @@ async def m_cb(b, cb):
         if (chet_id not in callsmusic.pytgcalls.active_calls) or (
             callsmusic.pytgcalls.active_calls[chet_id] == "playing"
         ):
-            await cb.answer("chat is not connected!", show_alert=True)
+            await cb.answer("Chat is not connected!", show_alert=True)
         else:
             callsmusic.pytgcalls.resume_stream(chet_id)
             await cb.answer("Music resumed!")
@@ -291,7 +291,7 @@ async def m_cb(b, cb):
 
     elif type_ == "cmenu":
         stats = updated_stats(conv, qeue)
-        await cb.answer("Menu opened")
+        await cb.answer("menu opened")
         marr = InlineKeyboardMarkup(
             [
                 [
@@ -448,12 +448,12 @@ async def play(_, message: Message):
                     InlineKeyboardButton("⏺ Menu", callback_data="cmenu"),
                     InlineKeyboardButton("🗑 Close", callback_data="ccls"),
                 ],
-                [InlineKeyboardButton(text="🎧 CHANNEL", url=f"https://t.me/{UPDATES_CHANNEL}")],
+                [InlineKeyboardButton(text="🎧 CHANNEL", url=f"https://t.me/{updateschannel}")],
             ]
         )
         file_name = get_file_name(audio)
         title = file_name
-        thumb_name = "https://telegra.ph/file/4b35d98fbdf2cd4f14d00.jpg"
+        thumb_name = "https://telegra.ph/file/f6086f8909fbfeb0844f2.png"
         thumbnail = thumb_name
         duration = round(audio.duration / 60)
         views = "Locally added"
@@ -495,7 +495,7 @@ async def play(_, message: Message):
                   InlineKeyboardButton("⏺ Menu", callback_data="cmenu"),
                   InlineKeyboardButton("🗑 Close", callback_data="ccls")
               ],[
-                  InlineKeyboardButton("🎧 CHANNEL", url=f"https://t.me/{UPDATES_CHANNEL}")
+                  InlineKeyboardButton("🎧 CHANNEL", url=f"https://t.me/{updateschannel}")
               ]
           ]
         )
@@ -537,7 +537,7 @@ async def play(_, message: Message):
                     InlineKeyboardButton("⏺ Menu", callback_data="cmenu"),
                     InlineKeyboardButton("🗑 Close", callback_data="ccls")
                 ],[
-                    InlineKeyboardButton("🎧 CHANNEL", url=f"https://t.me/{UPDATES_CHANNEL}")
+                    InlineKeyboardButton("🎧 CHANNEL", url=f"https://t.me/{updateschannel}")
                 ]
             ]
         )
@@ -573,7 +573,7 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="🎧 **Playing** the song requested by {} via youtube music, in linked channel".format(
+            caption="🎧 **playing** the song requested by {} via youtube music, in linked channel".format(
                 message.from_user.mention()
             ),
         )

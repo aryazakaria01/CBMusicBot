@@ -627,8 +627,8 @@ async def play(_, message: Message):
                 views = results[0]["views"]
             except Exception as e:
                 await lel.edit(
-                "**❌ Song not found.** please give a valid song name."
-            )
+                    "**❌ Song not found.** please give a valid song name."
+                )
                 print(str(e))
                 return
             dlurl=url

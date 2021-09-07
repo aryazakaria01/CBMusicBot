@@ -1,6 +1,6 @@
 <h2 align="centre">🎶 Cyber Music Bot 🎶</h2>
 
-### Veez Music is a telegram bot project that's allow you to play music on telegram voice chat group.
+### Cyber Music is a telegram bot project that's allow you to play music on telegram voice chat group.
 
 <p align="center"><a href="https://t.me/CyberMusicBot"><img src="https://telegra.ph/file/a884f8f101263a935b154.jpg" width="300"></a></p>
 <p align="center">
@@ -24,7 +24,7 @@
 
 🧪 Get STRING_SESSION from below:
 
-TAP THIS: [![GenerateString](https://img.shields.io/badge/repl.it-generateString-yellowgreen)](https://replit.com/@levinalab/StringSession#main.py)
+TAP THIS: [![GenerateString](https://img.shields.io/badge/repl.it-generateString-yellowgreen)](https://replit.com/@Arya01/PyrogramMusicString#main.py)
 
 🎖 History
 - [![Mentioned in Awesome Python](https://awesome.re/mentioned-badge.svg)](https://github.com/aryazakaria01/CBMusicBot)
@@ -111,7 +111,7 @@ For deployment on railway you can see the full of [Necessary Variables Here](htt
 - `sudo apt-get install -y nodejs`
 - `npm i -g npm`
 - `git clone https://github.com/aryazakaria01/CBMusicBot` # Clone your repo.
-- `cd CBMusic`
+- `cd CBMusicBot`
 - `pip3 install -U -r requirements.txt`
 - `cp example.env .env` #Use vim to edit ENVs
 - `vim .env` #Fill up your ENVs ( Steps press `i` to enter in insert mode then edit the file. Press `Esc` to exit the editing mode then type `:wq!` and press `Enter` key to save the file.)
